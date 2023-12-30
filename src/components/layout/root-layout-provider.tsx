@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+
 import NavigationBar from "./navigation-bar";
 import Footer from "./footer";
 
