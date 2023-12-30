@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useTheme } from "next-themes";
-import { Car, CarTaxiFront, Menu, Moon, Plane, Sun } from "lucide-react";
+import { Menu, Moon, Sun } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,13 +13,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Link from "next/link";
 
 export function DropdownMenuMobile() {
   const { setTheme } = useTheme();
@@ -40,34 +39,22 @@ export function DropdownMenuMobile() {
           </DropdownMenuLabel>
 
           <DropdownMenuItem asChild>
-            <Link href="/rental" className="gap-4">
-              <Car className="h-[1.2rem] w-[1.2rem]" />
-
-              <span>Rental Kendaraan</span>
-            </Link>
+            <Link href="/rental">Rental Kendaraan</Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem asChild>
-            <Link href="/tour" className="gap-4">
-              <Plane className="h-[1.2rem] w-[1.2rem]" />
-
-              <span>Tour</span>
-            </Link>
+            <Link href="/tour">Tour</Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem asChild>
-            <Link href="/carter" className="gap-4">
-              <CarTaxiFront className="h-[1.2rem] w-[1.2rem]" />
-
-              <span>Carter</span>
-            </Link>
+            <Link href="/carter">Carter</Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
 
         <DropdownMenuSub>
-          <DropdownMenuSubTrigger className="gap-4">
+          <DropdownMenuSubTrigger className="gap-2">
             <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
 
             <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -82,7 +69,7 @@ export function DropdownMenuMobile() {
               </DropdownMenuItem>
 
               <DropdownMenuItem onClick={() => setTheme("dark")}>
-                Dark
+                Moon
               </DropdownMenuItem>
 
               <DropdownMenuItem onClick={() => setTheme("system")}>

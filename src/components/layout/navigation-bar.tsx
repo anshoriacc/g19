@@ -39,7 +39,7 @@ export default function NavigationBar() {
           <ThemeToggle />
         </div>
 
-        <div className=" flex items-center gap-4 transition-all md:hidden">
+        <div className="flex items-center gap-4 transition-all md:hidden">
           <DropdownMenuMobile />
         </div>
       </div>
