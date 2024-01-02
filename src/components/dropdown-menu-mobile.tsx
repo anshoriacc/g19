@@ -35,7 +35,7 @@ export function DropdownMenuMobile() {
       <DropdownMenuContent align="end" className="w-40">
         <DropdownMenuGroup>
           <DropdownMenuLabel className="cursor-default">
-            Services
+            Layanan
           </DropdownMenuLabel>
 
           <DropdownMenuItem asChild>
@@ -69,7 +69,7 @@ export function DropdownMenuMobile() {
               </DropdownMenuItem>
 
               <DropdownMenuItem onClick={() => setTheme("dark")}>
-                Moon
+                Dark
               </DropdownMenuItem>
 
               <DropdownMenuItem onClick={() => setTheme("system")}>
