@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/utils";
 import Map from "./map";
 
-const kanit = Kanit({ weight: ["700"] });
+const kanit = Kanit({ weight: ["700"], subsets: ["latin"] });
 
 export default function About() {
   return (
