@@ -16,8 +16,8 @@ export default function NavigationBar() {
             src={g19logo}
             alt="G19 logo"
             height={32}
-            priority
             draggable={false}
+            priority
           />
         </Link>
 
