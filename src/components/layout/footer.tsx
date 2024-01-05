@@ -2,8 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone } from "lucide-react";
 import dayjs from "dayjs";
-
-import g19logo from "@/assets/g19.svg";
+import ScrollToTopLogo from "../scroll-to-top-logo";
 
 export default function Footer() {
   return (
@@ -11,13 +10,7 @@ export default function Footer() {
       <div className="mx-auto flex max-w-[1200px] flex-col gap-8 px-4 py-6">
         <div className="grid gap-8 md:grid-cols-[400px_1fr]">
           <div className="flex flex-col gap-4">
-            <Image
-              src={g19logo}
-              alt="G19 logo"
-              height={32}
-              draggable={false}
-              priority
-            />
+            <ScrollToTopLogo />
 
             <div className="flex flex-col items-start gap-1">
               <p>Jl. Margo Basuki Mulyoagung Kec. Dau Kab. Malang</p>
