@@ -7,7 +7,7 @@ import ScrollToTopLogo from "../scroll-to-top-logo";
 export default function Footer() {
   return (
     <footer className="bg-white text-sm dark:bg-neutral-950">
-      <div className="mx-auto flex max-w-[1200px] flex-col gap-8 px-4 py-6">
+      <div className="mx-auto flex max-w-[1200px] flex-col gap-8 px-6 py-6">
         <div className="grid gap-8 md:grid-cols-[400px_1fr]">
           <div className="flex flex-col gap-4">
             <ScrollToTopLogo />

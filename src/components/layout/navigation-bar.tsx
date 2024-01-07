@@ -10,7 +10,7 @@ import { DropdownMenuMobile } from "../dropdown-menu-mobile";
 export default function NavigationBar() {
   return (
     <section className="bg-white dark:bg-neutral-950">
-      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4">
+      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6">
         <Link href="/" className="select-none text-5xl font-bold text-primary">
           <Image
             src={g19logo}
@@ -21,7 +21,7 @@ export default function NavigationBar() {
           />
         </Link>
 
-        <div className="hidden items-center gap-4 transition-all md:flex">
+        <div className="hidden items-center gap-6 transition-all md:flex">
           <nav className=" flex items-center gap-1">
             <Link href="/rental">
               <Button variant="ghost">Rental Kendaraan</Button>
@@ -39,7 +39,7 @@ export default function NavigationBar() {
           <ThemeToggle />
         </div>
 
-        <div className="flex items-center gap-4 transition-all md:hidden">
+        <div className="flex items-center transition-all md:hidden">
           <DropdownMenuMobile />
         </div>
       </div>
