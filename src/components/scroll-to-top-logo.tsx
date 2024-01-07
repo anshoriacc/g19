@@ -1,19 +1,20 @@
 "use client";
 
-import Image from "next/image";
+import { Kanit } from "next/font/google";
 
-import g19logo from "@/assets/g19.svg";
+import { cn } from "@/utils";
+
+const kanit = Kanit({ weight: ["700"] });
 
 export default function ScrollToTopLogo() {
   return (
-    <Image
-      src={g19logo}
-      alt="G19 logo"
-      height={32}
-      draggable={false}
-      priority
-      className="cursor-pointer"
+    <a
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-    />
+      className={cn(
+        "cursor-pointer select-none text-5xl",
+        "to-neutral-white self-start bg-gradient-to-b from-primary from-60% bg-clip-text text-transparent",
+      )}>
+      <span className={cn(kanit.className)}>G19</span>
+    </a>
   );
 }

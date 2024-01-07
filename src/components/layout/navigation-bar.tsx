@@ -1,24 +1,24 @@
 import Link from "next/link";
-import Image from "next/image";
+import { Kanit } from "next/font/google";
 
 import { ThemeToggle } from "../theme-toggle";
-
-import g19logo from "@/assets/g19.svg";
 import { Button } from "../ui/button";
 import { DropdownMenuMobile } from "../dropdown-menu-mobile";
+import { cn } from "@/utils";
+
+const kanit = Kanit({ weight: ["700"] });
 
 export default function NavigationBar() {
   return (
-    <section className="bg-white dark:bg-neutral-950">
+    <section className="border-b border-b-neutral-200 bg-white dark:border-b-neutral-800 dark:bg-neutral-950">
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6">
-        <Link href="/" className="select-none text-5xl font-bold text-primary">
-          <Image
-            src={g19logo}
-            alt="G19 logo"
-            height={32}
-            draggable={false}
-            priority
-          />
+        <Link
+          href="/"
+          className={cn(
+            "select-none text-5xl",
+            "bg-gradient-to-b from-primary from-60% bg-clip-text text-transparent",
+          )}>
+          <span className={cn(kanit.className, "h-16")}>G19</span>
         </Link>
 
         <div className="hidden items-center gap-6 transition-all md:flex">

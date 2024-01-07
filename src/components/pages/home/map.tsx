@@ -1,6 +1,6 @@
 export default function Map() {
   return (
-    <div className="relative h-[240px] w-full max-w-[360px] self-center overflow-hidden rounded-md shadow-md">
+    <div className="relative h-[240px] w-full max-w-[360px] self-center overflow-hidden rounded-2xl border border-neutral-200 transition-all duration-300 dark:border-neutral-800">
       <div className="h-full w-full overflow-hidden">
         <iframe
           className="h-full w-full"
