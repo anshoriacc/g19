@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/utils";
-import Map from "./map";
+import ServicesCard from "./services-card";
 
 const kanit = Kanit({ weight: ["700"], subsets: ["latin"] });
 
@@ -20,7 +20,7 @@ export default function About() {
         bounce: 50,
         stiffness: 100,
       }}
-      className="mx-auto max-w-[1200px] space-y-6 px-6 py-6">
+      className="mx-auto max-w-[1200px] space-y-6 p-6">
       <h1
         className={cn(
           kanit.className,
@@ -29,19 +29,23 @@ export default function About() {
         G19 Tour & Travel
       </h1>
 
-      <div className="flex flex-col justify-center gap-6 md:flex-row">
-        <Map />
+      <div className="flex flex-1 flex-col gap-4">
+        <p className="text-center text-neutral-500">
+          G19 Tour & Travel menawarkan pengalaman rental kendaraan dan
+          perjalanan wisata yang tak terlupakan. Dengan armada kendaraan
+          berkualitas dan paket wisata menarik, kami hadir untuk memenuhi
+          kebutuhan perjalanan anda.
+        </p>
 
-        <div className="flex flex-1 flex-col space-y-6">
-          <p className="text-justify text-neutral-500">
-            G19 Tour & Travel menawarkan pengalaman rental kendaraan dan
-            perjalanan wisata yang tak terlupakan. Dengan armada kendaraan
-            berkualitas dan paket wisata menarik, kami hadir untuk memenuhi
-            kebutuhan perjalanan anda.
-          </p>
+        <Button className="self-center">Hubungi Kami</Button>
+      </div>
 
-          <Button className="self-center md:self-start">Hubungi Kami</Button>
-        </div>
+      <div className="flex flex-wrap justify-center gap-6">
+        <ServicesCard type="rental" />
+
+        <ServicesCard type="tour" />
+
+        <ServicesCard type="carter" />
       </div>
     </motion.div>
   );
