@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 import { DropdownMenuMobile } from "../dropdown-menu-mobile";
 import { cn } from "@/utils";
 
-const kanit = Kanit({ weight: ["700"] });
+const kanit = Kanit({ weight: ["700"], subsets: ["latin"] });
 
 export default function NavigationBar() {
   return (

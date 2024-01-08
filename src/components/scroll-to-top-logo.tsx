@@ -4,7 +4,7 @@ import { Kanit } from "next/font/google";
 
 import { cn } from "@/utils";
 
-const kanit = Kanit({ weight: ["700"] });
+const kanit = Kanit({ weight: ["700"], subsets: ["latin"] });
 
 export default function ScrollToTopLogo() {
   return (
