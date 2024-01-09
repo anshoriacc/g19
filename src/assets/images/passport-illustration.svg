@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 46.83 59.13">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: YanoneKaffeesatz-Bold, 'YanoneKaffeesatz Bold';
+        font-size: 8.7px;
+        font-weight: 700;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #efca4f;
+      }
+
+      .cls-3 {
+        letter-spacing: -.08em;
+      }
+
+      .cls-4 {
+        letter-spacing: 0em;
+      }
+
+      .cls-5 {
+        fill: none;
+        stroke: #efca4f;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: .97px;
+      }
+
+      .cls-6 {
+        filter: url(#drop-shadow-1);
+      }
+
+      .cls-2, .cls-7 {
+        stroke-width: 0px;
+      }
+
+      .cls-8 {
+        letter-spacing: 0em;
+      }
+
+      .cls-9, .cls-7 {
+        fill: #f2534e;
+      }
+
+      .cls-10 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="3.87" dy="3.87"/>
+      <feGaussianBlur result="blur" stdDeviation="0"/>
+      <feFlood flood-color="#000" flood-opacity=".1"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clippath">
+      <rect class="cls-7" width="46.83" height="59.13" rx="1.93" ry="1.93"/>
+    </clipPath>
+  </defs>
+  <g id="OBJECTS">
+    <g class="cls-6">
+      <g>
+        <rect class="cls-9" width="46.83" height="59.13" rx="1.93" ry="1.93"/>
+        <g class="cls-10">
+          <path class="cls-2" d="m53.8,55.33c0,.76-.62,1.37-1.37,1.37H3.96c-.76,0-1.37-.62-1.37-1.37h0c0-.76.62-1.37,1.37-1.37h48.47c.76,0,1.37.62,1.37,1.37h0Z"/>
+        </g>
+      </g>
+      <g>
+        <path class="cls-5" d="m36.16,20.95c0,6.06-4.91,10.97-10.97,10.97s-10.97-4.91-10.97-10.97,4.91-10.97,10.97-10.97,10.97,4.91,10.97,10.97Z"/>
+        <path class="cls-5" d="m32.23,20.95c0,6.06-3.15,10.97-7.04,10.97s-7.03-4.91-7.03-10.97,3.15-10.97,7.03-10.97,7.04,4.91,7.04,10.97Z"/>
+        <path class="cls-5" d="m27.62,20.95c0,6.06-1.09,10.97-2.43,10.97s-2.43-4.91-2.43-10.97,1.09-10.97,2.43-10.97,2.43,4.91,2.43,10.97Z"/>
+        <line class="cls-5" x1="14.22" y1="20.95" x2="36.16" y2="20.95"/>
+        <path class="cls-5" d="m33.23,13.48c-1.95,2.24-4.83,3.66-8.04,3.66s-6.08-1.42-8.04-3.66"/>
+        <path class="cls-5" d="m17.22,28.48c1.95-2.2,4.8-3.59,7.98-3.59s6.03,1.39,7.98,3.59"/>
+      </g>
+      <text class="cls-1" transform="translate(5.28 48.54)"><tspan class="cls-3" x="0" y="0">P</tspan><tspan x="3.9" y="0">ASSPO</tspan><tspan class="cls-4" x="28.41" y="0">R</tspan><tspan class="cls-8" x="33.17" y="0">T</tspan></text>
+    </g>
+  </g>
+</svg>
