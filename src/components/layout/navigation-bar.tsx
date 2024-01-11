@@ -4,7 +4,7 @@ import { Kanit } from "next/font/google";
 import { ThemeToggle } from "../theme-toggle";
 import { Button } from "../ui/button";
 import { DropdownMenuMobile } from "../dropdown-menu-mobile";
-import { cn } from "@/utils";
+import { cn } from "@/lib/utils";
 
 const kanit = Kanit({ weight: ["700"], subsets: ["latin"] });
 

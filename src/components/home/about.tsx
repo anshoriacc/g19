@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
-import { cn } from "@/utils";
 import ServicesCard from "./services-card";
 
 import mapIllustration from "@/assets/images/map-illustration.svg";
@@ -18,6 +17,7 @@ import suitcaseIllustration from "@/assets/images/suitcase-illustration.svg";
 import backpackIllustration from "@/assets/images/backpack-illustration.svg";
 import walletIllustration from "@/assets/images/wallet-illustration.svg";
 import compassIllustration from "@/assets/images/compass-illustration.svg";
+import { cn } from "@/lib/utils";
 
 const kanit = Kanit({ weight: ["700"], subsets: ["latin"] });
 

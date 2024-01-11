@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { cn } from "@/utils";
+import { cn } from "@/lib/utils";
 import patternFull from "@/assets/images/pattern-full.svg";
 
 const services = {
