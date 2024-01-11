@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -23,21 +23,22 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-
-const formSchema = z.object({
-  username: z.string().min(4, {
-    message: "Username minimal 4 karakter.",
-  }),
-  password: z.string().min(8, { message: "Password minimal 8 karakter." }),
-});
+import { LoginSchema } from "@/schemas";
+import { login } from "@/actions/login";
 
 const LoginForm = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const [isPending, startTransition] = useTransition();
+
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
+
+  const form = useForm<z.infer<typeof LoginSchema>>({
+    resolver: zodResolver(LoginSchema),
+    defaultValues: { username: "", password: "" },
   });
 
-  const onSubmit = useCallback((values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmit = useCallback(async (values: z.infer<typeof LoginSchema>) => {
+    login(values);
   }, []);
 
   return (

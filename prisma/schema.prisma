@@ -14,17 +14,38 @@ model AppSystem {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   username  String   @unique @db.VarChar(20)
   email     String   @unique
   name      String
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  accounts Account[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
 }
 
 model Reservation {
-  id            String          @id @default(uuid())
+  id            String          @id @default(cuid())
   type          ReservationType
   startDate     DateTime
   endDate       DateTime?
@@ -36,15 +57,15 @@ model Reservation {
   updatedAt     DateTime        @updatedAt
 
   Vehicle   Vehicle? @relation(fields: [vehicleId], references: [id])
-  vehicleId Int?
+  vehicleId String?
   Tour      Tour?    @relation(fields: [tourId], references: [id])
-  tourId    Int?
+  tourId    String?
   Carter    Carter?  @relation(fields: [carterId], references: [id])
-  carterId  Int?
+  carterId  String?
 }
 
 model Vehicle {
-  id                Int          @id @default(autoincrement())
+  id                String       @id @default(cuid())
   name              String
   description       String
   capacity          Int
@@ -64,11 +85,11 @@ model VehicleImage {
   imageUrl String
 
   Vehicle   Vehicle? @relation(fields: [vehicleId], references: [id])
-  vehicleId Int?
+  vehicleId String?
 }
 
 model Tour {
-  id           Int              @id @default(autoincrement())
+  id           String           @id @default(cuid())
   name         String
   description  String
   capacity     Int
@@ -90,16 +111,16 @@ model TourImage {
   id       Int    @id @default(autoincrement())
   imageUrl String
 
-  Tour   Tour? @relation(fields: [tourId], references: [id])
-  tourId Int?
+  Tour   Tour?   @relation(fields: [tourId], references: [id])
+  tourId String?
 }
 
 model TourHighlight {
   id        Int    @id @default(autoincrement())
   highlight String
 
-  Tour   Tour? @relation(fields: [tourId], references: [id])
-  tourId Int?
+  Tour   Tour?   @relation(fields: [tourId], references: [id])
+  tourId String?
 }
 
 model TourItinerary {
@@ -107,8 +128,8 @@ model TourItinerary {
   time      String[]
   itinerary String[]
 
-  Tour   Tour? @relation(fields: [tourId], references: [id])
-  tourId Int?
+  Tour   Tour?   @relation(fields: [tourId], references: [id])
+  tourId String?
 }
 
 model TourDate {
@@ -116,12 +137,12 @@ model TourDate {
   startDate DateTime
   endDate   DateTime?
 
-  Tour   Tour? @relation(fields: [tourId], references: [id])
-  tourId Int?
+  Tour   Tour?   @relation(fields: [tourId], references: [id])
+  tourId String?
 }
 
 model Carter {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(cuid())
   name        String
   description String
   capacity    Int
@@ -139,7 +160,7 @@ model CarterImage {
   imageUrl String
 
   Carter   Carter? @relation(fields: [carterId], references: [id])
-  carterId Int?
+  carterId String?
 }
 
 model Banner {
