@@ -30,7 +30,7 @@ const NavigationBar = async () => {
           {session && <DashboardIcon />}
         </div>
 
-        <div className="hidden items-center gap-2 transition-all md:flex">
+        <div className="hidden items-center gap-2 md:flex">
           <nav className="flex items-center gap-1">
             <Link href="/rental">
               <Button variant="ghost">Rental Kendaraan</Button>
@@ -45,13 +45,18 @@ const NavigationBar = async () => {
             </Link>
           </nav>
 
+          {!session && <Button variant="outline">Hubungi Kami</Button>}
+
           <ThemeToggle />
 
           {session && <DropdownMenuAdmin />}
         </div>
 
-        <div className="flex items-center gap-2 transition-all md:hidden">
+        <div className="flex items-center gap-2 md:hidden">
+          {!session && <Button variant="outline">Hubungi Kami</Button>}
+
           <DropdownMenuMobile />
+
           {session && <DropdownMenuAdmin />}
         </div>
       </div>
