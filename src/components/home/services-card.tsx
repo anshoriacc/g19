@@ -19,7 +19,7 @@ const services = {
   carter: {
     title: "Carter",
     description:
-      "Kami menyediakan layanan antar-jemput dengan berbagai destinasi di sekitar wilayah Malang Raya.",
+      "Kami menyediakan layanan antar-jemput berbagai destinasi.",
   },
 };
 
@@ -42,7 +42,7 @@ const ServicesCard = ({ type, children }: Props) => {
         {services[type].title}
       </h3>
 
-      <p className="absolute left-8 top-16 z-10 w-[304px] translate-x-10 translate-y-10 text-neutral-500 opacity-0 transition-all delay-200 duration-200 group-hover:visible group-hover:top-16 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100">
+      <p className="absolute left-8 top-16 z-10 w-[calc(100%-4rem)] translate-x-10 translate-y-10 text-neutral-500 opacity-0 transition-all delay-200 duration-200 group-hover:visible group-hover:top-16 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100">
         {services[type].description}
       </p>
 
