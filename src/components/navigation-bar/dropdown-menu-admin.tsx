@@ -10,9 +10,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { LogoutButton } from "../logout-button";
+import LogoutMenuItem from "./LogoutMenuItem";
 import { auth } from "@/auth";
-import { Badge } from "../ui/badge";
+import { ArrowRight } from "lucide-react";
 
 const DropdownMenuAdmin = async () => {
   const session = await auth();
@@ -24,27 +24,22 @@ const DropdownMenuAdmin = async () => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end">
-        <DropdownMenuGroup>
-          <DropdownMenuLabel className="flex cursor-default flex-col">
-            <span>{session?.user.name}</span>
+        <DropdownMenuItem asChild>
+          <Link href="/dashboard" className="group">
+            <span className="flex flex-col">
+              <span className="font-bold">{session?.user.name}</span>
 
-            <span className="font-normal text-neutral-500">
-              {session?.user.username}
+              <span className="text-neutral-500">
+                Dashboard
+                <ArrowRight className="inline h-3 w-3 group-hover:ml-0.5 transition-all" />
+              </span>
             </span>
-          </DropdownMenuLabel>
-
-          <DropdownMenuSeparator />
-
-          <DropdownMenuItem asChild>
-            <Link href="/dashboard">Dashboard</Link>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
+          </Link>
+        </DropdownMenuItem>
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem>
-          <LogoutButton>Logout</LogoutButton>
-        </DropdownMenuItem>
+        <LogoutMenuItem />
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -6,7 +6,6 @@ import { Button } from "../ui/button";
 import { DropdownMenuMobile } from "./dropdown-menu-mobile";
 import { cn } from "@/lib/utils";
 import { auth } from "@/auth";
-import { LogoutButton } from "../logout-button";
 import DropdownMenuAdmin from "./dropdown-menu-admin";
 import DashboardIcon from "./dashboard-icon";
 

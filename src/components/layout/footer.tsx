@@ -1,10 +1,12 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Mail, Phone } from "lucide-react";
 import dayjs from "dayjs";
-import ScrollToTopLogo from "../scroll-to-top-logo";
 
-export default function Footer() {
+import ScrollToTopLogo from "../scroll-to-top-logo";
+import { auth } from "@/auth";
+
+const Footer = async () => {
+  const session = await auth();
   return (
     <footer className="border-t border-t-neutral-200 bg-white text-sm dark:border-t-neutral-800 dark:bg-neutral-950">
       <div className="mx-auto flex max-w-[1200px] flex-col gap-8 px-6 py-6">
@@ -60,10 +62,24 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="text-neutral-500">
-          © {dayjs().get("year")} G19 Tour & Travel
+        <p className="flex gap-2 text-neutral-500">
+          <span>© {dayjs().get("year")} G19 Tour & Travel</span>
+
+          {!session && (
+            <>
+              <span>•</span>
+
+              <Link
+                href="/login"
+                className="transition-all hover:text-neutral-900 hover:dark:text-neutral-50">
+                Login
+              </Link>
+            </>
+          )}
         </p>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
