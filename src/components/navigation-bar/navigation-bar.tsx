@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { Kanit } from "next/font/google";
 
-import { ThemeToggle } from "../theme-toggle";
+import { ThemeToggle } from "./theme-toggle";
 import { Button } from "../ui/button";
-import { DropdownMenuMobile } from "../dropdown-menu-mobile";
+import { DropdownMenuMobile } from "./dropdown-menu-mobile";
 import { cn } from "@/lib/utils";
 import { auth } from "@/auth";
 import { LogoutButton } from "../logout-button";
-import DropdownMenuAdmin from "../dropdown-menu-admin";
+import DropdownMenuAdmin from "./dropdown-menu-admin";
+import DashboardIcon from "./dashboard-icon";
 
 const kanit = Kanit({ weight: ["700"], subsets: ["latin"] });
 
@@ -17,25 +18,21 @@ const NavigationBar = async () => {
   return (
     <section className="border-b border-b-neutral-200 bg-white dark:border-b-neutral-800 dark:bg-neutral-950">
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <Link
             href="/"
             className={cn(
-              "select-none text-5xl",
+              "select-none text-5xl font-bold",
               "bg-gradient-to-b from-primary from-60% bg-clip-text text-transparent",
             )}>
             <span className={kanit.className}>G19</span>
           </Link>
 
-          {session && (
-            <Link href="/dashboard">
-              <Button variant="ghost">Dashboard</Button>
-            </Link>
-          )}
+          {session && <DashboardIcon />}
         </div>
 
-        <div className="hidden items-center gap-6 transition-all md:flex">
-          <nav className=" flex items-center gap-1">
+        <div className="hidden items-center gap-2 transition-all md:flex">
+          <nav className="flex items-center gap-1">
             <Link href="/rental">
               <Button variant="ghost">Rental Kendaraan</Button>
             </Link>
@@ -54,8 +51,9 @@ const NavigationBar = async () => {
           {session && <DropdownMenuAdmin />}
         </div>
 
-        <div className="flex items-center transition-all md:hidden">
+        <div className="flex items-center gap-2 transition-all md:hidden">
           <DropdownMenuMobile />
+          {session && <DropdownMenuAdmin />}
         </div>
       </div>
     </section>

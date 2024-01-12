@@ -23,13 +23,13 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   const session = await auth();
 
   return (
-    <SessionProvider session={session}>
-      <html lang="en">
-        <body
-          className={cn(
-            inter.className,
-            "bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-50",
-          )}>
+    <html lang="en">
+      <body
+        className={cn(
+          inter.className,
+          "bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-50",
+        )}>
+        <SessionProvider session={session}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -37,8 +37,8 @@ export default async function RootLayout({ children }: PropsWithChildren) {
             disableTransitionOnChange>
             <RootLayoutProvider>{children}</RootLayoutProvider>
           </ThemeProvider>
-        </body>
-      </html>
-    </SessionProvider>
+        </SessionProvider>
+      </body>
+    </html>
   );
 }
