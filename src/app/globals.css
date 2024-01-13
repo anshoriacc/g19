@@ -6,6 +6,10 @@ body {
   overflow-x: hidden;
 }
 
+* {
+  min-width: 0;
+}
+
 .swiper-pagination-bullet {
   background: #777 !important;
 }
