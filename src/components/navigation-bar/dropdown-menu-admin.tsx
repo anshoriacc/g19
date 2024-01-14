@@ -1,18 +1,16 @@
 import React from "react";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import LogoutMenuItem from "./LogoutMenuItem";
+import LogoutMenuItem from "./logout-menu-item";
 import { auth } from "@/auth";
-import { ArrowRight } from "lucide-react";
 
 const DropdownMenuAdmin = async () => {
   const session = await auth();
@@ -23,17 +21,19 @@ const DropdownMenuAdmin = async () => {
         <div className="h-9 w-9 rounded-full bg-gradient-to-br from-primary from-20%" />
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="w-36">
         <DropdownMenuItem asChild>
           <Link href="/dashboard" className="group">
-            <span className="flex flex-col">
-              <span className="font-bold">{session?.user.name}</span>
+            <div className="flex w-full flex-col">
+              <p className="line-clamp-1 text-ellipsis text-base font-bold">
+                {session?.user.name}
+              </p>
 
-              <span className="text-neutral-500">
+              <p className="text-neutral-500">
                 Dashboard
-                <ArrowRight className="inline h-3 w-3 group-hover:ml-0.5 transition-all" />
-              </span>
-            </span>
+                <ArrowRight className="ml-0.5 inline h-3 w-3 transition-all group-hover:ml-1" />
+              </p>
+            </div>
           </Link>
         </DropdownMenuItem>
 

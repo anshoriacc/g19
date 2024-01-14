@@ -10,6 +10,9 @@ interface Props {
 const LogoutMenuItem = ({ children }: Props) => {
   return (
     <DropdownMenuItem
+      className={
+        "text-red-500 focus:text-red-500 dark:focus:text-red-500"
+      }
       onClick={() => {
         logout();
       }}>

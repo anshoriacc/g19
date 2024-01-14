@@ -4,28 +4,19 @@ import { Kanit } from "next/font/google";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "../ui/button";
 import { DropdownMenuMobile } from "./dropdown-menu-mobile";
-import { cn } from "@/lib/utils";
 import { auth } from "@/auth";
 import DropdownMenuAdmin from "./dropdown-menu-admin";
 import DashboardIcon from "./dashboard-icon";
-
-const kanit = Kanit({ weight: ["700"], subsets: ["latin"] });
+import Logo from "../logo";
 
 const NavigationBar = async () => {
   const session = await auth();
 
   return (
-    <section className="border-b border-b-neutral-200 bg-white dark:border-b-neutral-800 dark:bg-neutral-950">
+    <section className="overflow-hidden border-b border-b-neutral-200 bg-white dark:border-b-neutral-800 dark:bg-neutral-950">
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6">
         <div className="flex items-center gap-2">
-          <Link
-            href="/"
-            className={cn(
-              "select-none text-5xl font-bold",
-              "bg-gradient-to-b from-primary from-60% bg-clip-text text-transparent",
-            )}>
-            <span className={kanit.className}>G19</span>
-          </Link>
+          <Logo />
 
           {session && <DashboardIcon />}
         </div>

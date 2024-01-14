@@ -5,7 +5,6 @@ import { SessionProvider } from "next-auth/react";
 
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import RootLayoutProvider from "@/components/layout/root-layout-provider";
 import { cn } from "@/lib/utils";
 import { auth } from "@/auth";
 
@@ -23,7 +22,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   const session = await auth();
 
   return (
-    <html lang="en">
+    <html lang="id">
       <body
         className={cn(
           inter.className,
@@ -35,7 +34,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange>
-            <RootLayoutProvider>{children}</RootLayoutProvider>
+            {children}
           </ThemeProvider>
         </SessionProvider>
       </body>
