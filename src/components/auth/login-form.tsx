@@ -26,7 +26,7 @@ import {
 import { LoginSchema } from "@/schemas";
 import { login } from "@/actions/login";
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const [isPending, startTransition] = useTransition();
 
   const [error, setError] = useState<string | undefined>("");
@@ -111,5 +111,3 @@ const LoginForm = () => {
     </motion.div>
   );
 };
-
-export default LoginForm;

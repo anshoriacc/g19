@@ -2,11 +2,12 @@ import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 import dayjs from "dayjs";
 
-import ScrollToTopLogo from "../scroll-to-top-logo";
+import { ScrollToTopLogo } from "../scroll-to-top-logo";
 import { auth } from "@/auth";
 
-const Footer = async () => {
+export const Footer = async () => {
   const session = await auth();
+
   return (
     <footer className="border-t border-t-neutral-200 bg-white dark:border-t-neutral-800 dark:bg-neutral-950">
       <div className="mx-auto flex max-w-[1200px] flex-col gap-8 p-6">
@@ -81,5 +82,3 @@ const Footer = async () => {
     </footer>
   );
 };
-
-export default Footer;

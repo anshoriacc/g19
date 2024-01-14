@@ -9,10 +9,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import LogoutMenuItem from "./logout-menu-item";
+import { LogoutMenuItem } from "./logout-menu-item";
 import { auth } from "@/auth";
 
-const DropdownMenuAdmin = async () => {
+export const DropdownMenuAdmin = async () => {
   const session = await auth();
 
   return (
@@ -44,5 +44,3 @@ const DropdownMenuAdmin = async () => {
     </DropdownMenu>
   );
 };
-
-export default DropdownMenuAdmin;

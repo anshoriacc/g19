@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 type Props = PropsWithChildren<HTMLAttributes<HTMLDivElement>>;
 
-export default function Container({ children, className, ...props }: Props) {
+export const Container = ({ children, className, ...props }: Props) => {
   return (
     <main
       className={cn(
@@ -15,4 +15,4 @@ export default function Container({ children, className, ...props }: Props) {
       {children}
     </main>
   );
-}
+};

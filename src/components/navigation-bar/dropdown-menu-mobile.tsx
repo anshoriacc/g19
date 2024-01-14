@@ -19,7 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export function DropdownMenuMobile() {
+export const DropdownMenuMobile = () => {
   const { setTheme } = useTheme();
 
   return (
@@ -81,4 +81,4 @@ export function DropdownMenuMobile() {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+};

@@ -7,12 +7,10 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const LogoutMenuItem = ({ children }: Props) => {
+export const LogoutMenuItem = ({ children }: Props) => {
   return (
     <DropdownMenuItem
-      className={
-        "text-red-500 focus:text-red-500 dark:focus:text-red-500"
-      }
+      className={"text-red-500 focus:text-red-500 dark:focus:text-red-500"}
       onClick={() => {
         logout();
       }}>
@@ -20,5 +18,3 @@ const LogoutMenuItem = ({ children }: Props) => {
     </DropdownMenuItem>
   );
 };
-
-export default LogoutMenuItem;

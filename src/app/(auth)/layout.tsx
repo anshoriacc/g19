@@ -1,5 +1,5 @@
 import { FooterMinimal } from "@/components/layout/footer-minimal";
-import NavigationBar from "@/components/navigation-bar/navigation-bar";
+import { NavigationBar } from "@/components/navigation-bar/navigation-bar";
 import { PropsWithChildren } from "react";
 
 export default function AuthLayout({ children }: PropsWithChildren) {
@@ -8,7 +8,7 @@ export default function AuthLayout({ children }: PropsWithChildren) {
       <NavigationBar />
 
       {children}
-      
+
       <FooterMinimal />
     </>
   );

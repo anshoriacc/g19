@@ -18,14 +18,13 @@ const services = {
   },
   carter: {
     title: "Carter",
-    description:
-      "Kami menyediakan layanan antar-jemput berbagai destinasi.",
+    description: "Kami menyediakan layanan antar-jemput berbagai destinasi.",
   },
 };
 
 type Props = PropsWithChildren<{ type: keyof typeof services }>;
 
-const ServicesCard = ({ type, children }: Props) => {
+export const ServicesCard = ({ type, children }: Props) => {
   return (
     <Link
       href={`/${type}`}
@@ -36,7 +35,7 @@ const ServicesCard = ({ type, children }: Props) => {
       )}>
       <h3
         className={cn(
-          "bg-gradient-to-b from-neutral-900 from-60% bg-clip-text font-bold text-transparent text-4xl group-hover:text-3xl dark:from-neutral-50",
+          "bg-gradient-to-b from-neutral-900 from-60% bg-clip-text text-4xl font-bold text-transparent group-hover:text-3xl dark:from-neutral-50",
           "absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 gap-2 transition-all duration-500 group-hover:left-8 group-hover:top-8 group-hover:translate-x-0 group-hover:translate-y-0",
         )}>
         {services[type].title}
@@ -59,5 +58,3 @@ const ServicesCard = ({ type, children }: Props) => {
     </Link>
   );
 };
-
-export default ServicesCard;

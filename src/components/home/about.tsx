@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
-import ServicesCard from "./services-card";
+import { ServicesCard } from "./services-card";
+import { cn } from "@/lib/utils";
 
 import mapIllustration from "@/assets/images/map-illustration.svg";
 import beachIllustration from "@/assets/images/beach-illustration.svg";
@@ -17,11 +18,10 @@ import suitcaseIllustration from "@/assets/images/suitcase-illustration.svg";
 import backpackIllustration from "@/assets/images/backpack-illustration.svg";
 import walletIllustration from "@/assets/images/wallet-illustration.svg";
 import compassIllustration from "@/assets/images/compass-illustration.svg";
-import { cn } from "@/lib/utils";
 
 const kanit = Kanit({ weight: ["700"], subsets: ["latin"] });
 
-export default function About() {
+export const About = () => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -171,4 +171,4 @@ export default function About() {
       </div>
     </motion.div>
   );
-}
+};

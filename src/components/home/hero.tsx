@@ -6,9 +6,9 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import CarouselCard from "./carousel-card";
+import { CarouselCard } from "./carousel-card";
 
-export default function Hero() {
+export const Hero = () => {
   return (
     <section className="w-full">
       <Swiper
@@ -29,4 +29,4 @@ export default function Hero() {
       </Swiper>
     </section>
   );
-}
+};
