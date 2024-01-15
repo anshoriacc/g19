@@ -7,6 +7,7 @@ import { DropdownMenuMobile } from "./dropdown-menu-mobile";
 import { auth } from "@/auth";
 import { DropdownMenuAdmin } from "./dropdown-menu-admin";
 import { Logo } from "../logo";
+import { NavigationList } from "./navigation-list";
 
 export const NavigationBar = async () => {
   const session = await auth();
@@ -17,19 +18,7 @@ export const NavigationBar = async () => {
         <Logo />
 
         <div className="hidden items-center gap-2 md:flex">
-          <nav className="flex items-center gap-1">
-            <Link href="/rental">
-              <Button variant="ghost">Rental Kendaraan</Button>
-            </Link>
-
-            <Link href="/tour">
-              <Button variant="ghost">Tour</Button>
-            </Link>
-
-            <Link href="/carter">
-              <Button variant="ghost">Carter</Button>
-            </Link>
-          </nav>
+          <NavigationList />
 
           {!session && <Button variant="outline">Hubungi Kami</Button>}
 
