@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
 
 const navigationList = [
   { name: "Rental Kendaraan", href: "/rental" },
@@ -19,8 +20,12 @@ export const NavigationList = () => {
       {navigationList.map(item => (
         <Link key={item.href} href={item.href}>
           <Button
-            variant={pathname.startsWith(item.href) ? "secondary" : "ghost"}>
-            {item.href}
+            variant="ghost"
+            className={cn(
+              pathname.startsWith(item.href) &&
+                "text-primary hover:text-primary",
+            )}>
+            {item.name}
           </Button>
         </Link>
       ))}
