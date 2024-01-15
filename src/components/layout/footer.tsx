@@ -40,7 +40,7 @@ export const Footer = async () => {
                 <Link
                   href="/rental"
                   className="transition-colors hover:text-primary">
-                  Rental Kendaraan
+                  Rental
                 </Link>
               </li>
 

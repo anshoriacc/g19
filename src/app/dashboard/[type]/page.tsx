@@ -26,5 +26,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default function ProductPage({ params }: Props) {
   const { type } = params;
 
-  return <Container>{type}</Container>;
+  return <Container className="mx-0">{type}</Container>;
 }

@@ -2,20 +2,20 @@ import { PropsWithChildren } from "react";
 
 import { FooterMinimal } from "@/components/layout/footer-minimal";
 import { Sidebar } from "@/components/layout/sidebar";
-import { NavigationBarDashboard } from "@/components/navigation-bar/navigation-bar-dashboard";
+import { NavigationBarDashboard } from "@/components/navigation/navigation-bar-dashboard";
 
 export default function DashboardLayout({ children }: PropsWithChildren) {
   return (
-    <section className="grid md:grid-cols-[220px_1fr] lg:grid-cols-[240px_1fr]">
-      <Sidebar />
+    <>
+      <NavigationBarDashboard />
 
-      <section>
-        <NavigationBarDashboard />
+      <section className="mx-auto grid max-w-[1200px] md:grid-cols-[220px_1fr] lg:grid-cols-[240px_1fr]">
+        <Sidebar />
 
         {children}
-
-        <FooterMinimal className="mx-0 mr-auto" />
       </section>
-    </section>
+
+      <FooterMinimal />
+    </>
   );
 }

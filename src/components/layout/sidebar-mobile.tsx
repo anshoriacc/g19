@@ -3,6 +3,7 @@ import { Menu } from "lucide-react";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
 import { Logo } from "../logo";
+import { NavigationListSidebar } from "../navigation/navigation-list-sidebar";
 
 export const SidebarMobile = () => {
   return (
@@ -16,10 +17,12 @@ export const SidebarMobile = () => {
       </SheetTrigger>
 
       <SheetContent className="w-60" side="left">
-        <div className="flex h-full flex-col">
+        <div className="flex h-full flex-col gap-4">
           <SheetHeader className="self-center">
             <Logo />
           </SheetHeader>
+
+          <NavigationListSidebar />
         </div>
       </SheetContent>
     </Sheet>

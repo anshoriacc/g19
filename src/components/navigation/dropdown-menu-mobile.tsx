@@ -39,7 +39,7 @@ export const DropdownMenuMobile = () => {
           </DropdownMenuLabel>
 
           <DropdownMenuItem asChild>
-            <Link href="/rental">Rental Kendaraan</Link>
+            <Link href="/rental">Rental</Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem asChild>
