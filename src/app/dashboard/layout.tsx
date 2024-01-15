@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 
 import { FooterMinimal } from "@/components/layout/footer-minimal";
-import { Sidebar } from "@/components/layout/sidebar";
+import { Sidebar } from "@/components/navigation/sidebar";
 import { NavigationBarDashboard } from "@/components/navigation/navigation-bar-dashboard";
 
 export default function DashboardLayout({ children }: PropsWithChildren) {

@@ -10,5 +10,12 @@ export const metadata: Metadata = {
 export default async function DashboardPage() {
   const session = await auth();
 
-  return <Container className="mx-0">Dashboard</Container>;
+  return <Container className="mx-0">
+    <p className="mb-40">Dashboard</p>
+    <p className="mb-40">Dashboard</p>
+    <p className="mb-40">Dashboard</p>
+    <p className="mb-40">Dashboard</p>
+    <p className="mb-40">Dashboard</p>
+    <p className="mb-40">Dashboard</p>
+  </Container>;
 }

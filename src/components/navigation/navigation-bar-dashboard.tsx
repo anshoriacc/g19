@@ -1,7 +1,7 @@
 import { ThemeToggle } from "./theme-toggle";
 import { auth } from "@/auth";
 import { DropdownMenuAdmin } from "./dropdown-menu-admin";
-import { SidebarMobile } from "../layout/sidebar-mobile";
+import { SidebarMobile } from "./sidebar-mobile";
 import { Logo } from "../logo";
 
 export const NavigationBarDashboard = async () => {

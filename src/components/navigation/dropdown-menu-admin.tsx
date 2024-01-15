@@ -18,7 +18,7 @@ export const DropdownMenuAdmin = async () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <div className="h-9 w-9 rounded-full bg-gradient-to-br from-primary from-20%" />
+        <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary from-20%" />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="w-36">
