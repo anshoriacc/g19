@@ -1,7 +1,7 @@
 "use server";
 
-import * as z from "zod";
 import { AuthError } from "next-auth";
+import * as z from "zod";
 
 import { signIn } from "../auth";
 import { LoginSchema } from "@/schemas";
@@ -13,13 +13,14 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
       password: values.password,
       redirectTo: "/dashboard",
     });
+    return { success: "Login sukses" };
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
-          return { error: "Invalid credentials!" };
+          return { error: "Username atau password salah." };
         default:
-          return { error: "Something went wrong!" };
+          return { error: "Terjadi kesalahan, silakan coba lagi." };
       }
     }
 

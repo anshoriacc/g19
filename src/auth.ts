@@ -6,7 +6,6 @@ import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
 import { LoginSchema } from "./schemas";
 import { getUserById } from "./data/user";
-import { get } from "http";
 
 export const {
   handlers: { GET, POST },

@@ -25,21 +25,41 @@ import {
 } from "../ui/card";
 import { LoginSchema } from "@/schemas";
 import { login } from "@/actions/login";
+import { cn } from "@/lib/utils";
 
 export const LoginForm = () => {
   const [isPending, startTransition] = useTransition();
-
   const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
+  const [_, setSuccess] = useState<string | undefined>("");
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
     defaultValues: { username: "", password: "" },
   });
 
-  const onSubmit = useCallback(async (values: z.infer<typeof LoginSchema>) => {
-    login(values);
-  }, []);
+  const onSubmit = useCallback(
+    async (values: z.infer<typeof LoginSchema>) => {
+      setError("");
+      setSuccess("");
+
+      startTransition(() => {
+        login(values)
+          .then(data => {
+            if (data?.error) {
+              form.reset();
+              setError(data.error);
+            }
+
+            if (data.success) {
+              form.reset();
+              setSuccess(data.success);
+            }
+          })
+          .catch(() => setError("Terjadi kesalahan, silakan coba lagi."));
+      });
+    },
+    [form],
+  );
 
   return (
     <motion.div
@@ -99,8 +119,19 @@ export const LoginForm = () => {
                 )}
               />
 
+              <p
+                className={cn(
+                  "text-sm font-medium text-red-500 opacity-0 dark:text-red-900",
+                  error && "opacity-100",
+                )}>
+                {error}
+              </p>
+
               <div className="flex">
-                <Button type="submit" className="ml-auto">
+                <Button
+                  type="submit"
+                  className="ml-auto"
+                  disabled={!form.formState.isValid || isPending}>
                   Masuk
                 </Button>
               </div>

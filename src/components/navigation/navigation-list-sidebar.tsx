@@ -36,17 +36,17 @@ const serviceList = [
   {
     icon: <CarFront size={18} />,
     name: "Rental",
-    href: "/service/rental",
+    href: "/dashboard/rental",
   },
   {
     icon: <TentTree size={18} />,
     name: "Tour",
-    href: "/service/tour",
+    href: "/dashboard/tour",
   },
   {
     icon: <CarTaxiFront size={18} />,
     name: "Carter",
-    href: "/service/carter",
+    href: "/dashboard/carter",
   },
 ];
 
