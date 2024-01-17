@@ -82,7 +82,7 @@ export const LoginForm = () => {
 
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
                 control={form.control}
                 name="username"
@@ -127,14 +127,14 @@ export const LoginForm = () => {
                 {error}
               </p>
 
-              <div className="flex">
-                <Button
-                  type="submit"
-                  className="ml-auto"
-                  disabled={!form.formState.isValid || isPending}>
-                  Masuk
-                </Button>
-              </div>
+              {/* <div className="flex"> */}
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={isPending}>
+                Masuk
+              </Button>
+              {/* </div> */}
             </form>
           </Form>
         </CardContent>

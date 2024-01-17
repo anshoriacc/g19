@@ -12,8 +12,8 @@ export const ScrollToTop = () => {
     <Button
       variant="ghost"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="p-2">
-      <ChevronUp />
+      className="group p-2">
+      <ChevronUp className="text-neutral-500 group-hover:text-neutral-900 dark:group-hover:text-neutral-50 transition-all" />
     </Button>
   );
 };
