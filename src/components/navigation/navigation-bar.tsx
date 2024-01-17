@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Kanit } from "next/font/google";
 
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "../ui/button";
@@ -8,9 +7,12 @@ import { auth } from "@/auth";
 import { DropdownMenuAdmin } from "./dropdown-menu-admin";
 import { Logo } from "../logo";
 import { NavigationList } from "./navigation-list";
+import { getSystemConfig } from "@/data/app-system";
 
 export const NavigationBar = async () => {
   const session = await auth();
+
+  const systemConfig = await getSystemConfig();
 
   return (
     <section className="overflow-hidden border-b border-b-neutral-200 bg-white dark:border-b-neutral-800 dark:bg-neutral-950">
@@ -20,7 +22,13 @@ export const NavigationBar = async () => {
         <div className="hidden items-center gap-2 md:flex">
           <NavigationList />
 
-          {!session && <Button variant="outline">Hubungi Kami</Button>}
+          {!session && (
+            <Link
+              href={`https://wa.me/62${systemConfig?.phone}?text=Halo!%20`}
+              target="_blank">
+              <Button variant="outline">Hubungi Kami</Button>
+            </Link>
+          )}
 
           <ThemeToggle />
 
@@ -28,7 +36,13 @@ export const NavigationBar = async () => {
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
-          {!session && <Button variant="outline">Hubungi Kami</Button>}
+          {!session && (
+            <Link
+              href={`https://wa.me/62${systemConfig?.phone}?text=Halo!%20`}
+              target="_blank">
+              <Button variant="outline">Hubungi Kami</Button>
+            </Link>
+          )}
 
           <DropdownMenuMobile />
 

@@ -7,6 +7,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { auth } from "@/auth";
+import { getSystemConfig } from "@/data/app-system";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,10 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: PropsWithChildren) {
   const session = await auth();
+
+  const systemConfig = await getSystemConfig();
+
+  if (!systemConfig) throw new Error("Failed to fetch system config");
 
   return (
     <html lang="id">

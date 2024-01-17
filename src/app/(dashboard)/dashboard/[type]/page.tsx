@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ProductPage({ params }: Props) {
+export default async function ProductPage({ params }: Props) {
   const { type } = params;
 
   return <Container className="mx-0">{type}</Container>;

@@ -3,6 +3,8 @@
 import { Kanit } from "next/font/google";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
 import { ServicesCard } from "./services-card";
@@ -18,10 +20,13 @@ import suitcaseIllustration from "@/assets/images/suitcase-illustration.svg";
 import backpackIllustration from "@/assets/images/backpack-illustration.svg";
 import walletIllustration from "@/assets/images/wallet-illustration.svg";
 import compassIllustration from "@/assets/images/compass-illustration.svg";
+import { appSystemSchema } from "@/schemas";
 
 const kanit = Kanit({ weight: ["700"], subsets: ["latin"] });
 
-export const About = () => {
+type Props = { systemConfig: z.infer<typeof appSystemSchema> | null };
+
+export const About = ({ systemConfig }: Props) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -49,7 +54,11 @@ export const About = () => {
           kebutuhan perjalanan anda.
         </p>
 
-        <Button>Hubungi Kami</Button>
+        <Link
+          href={`https://wa.me/62${systemConfig?.phone ?? ""}?text=Halo!%20`}
+          target="_blank">
+          <Button>Hubungi Kami</Button>
+        </Link>
       </div>
 
       <div className="flex flex-wrap justify-center gap-6">

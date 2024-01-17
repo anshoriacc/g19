@@ -1,19 +1,22 @@
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
 import dayjs from "dayjs";
+import { Mail, Phone } from "lucide-react";
 
 import { ScrollToTopLogo } from "../scroll-to-top-logo";
 import { auth } from "@/auth";
+import { getSystemConfig } from "@/data/app-system";
 
 export const Footer = async () => {
   const session = await auth();
+
+  const systemConfig = await getSystemConfig();
 
   return (
     <footer className="border-t border-t-neutral-200 bg-white dark:border-t-neutral-800 dark:bg-neutral-950">
       <div className="mx-auto flex max-w-[1200px] flex-col gap-8 p-6">
         <div className="grid gap-8 md:grid-cols-2">
           <div className="flex flex-col gap-4">
-            <ScrollToTopLogo />
+            <ScrollToTopLogo systemConfig={systemConfig} />
 
             <div className="flex flex-col items-start gap-2">
               <p>Jl. Margo Basuki Mulyoagung Kec. Dau Kab. Malang</p>
@@ -21,13 +24,13 @@ export const Footer = async () => {
               <Link
                 href="mailto:g19tourtravel@gmail.com"
                 className="flex items-center gap-2 transition-colors hover:text-primary">
-                <Mail size={20} /> g19tourtravel@gmail.com
+                <Mail size={20} /> {systemConfig?.email}
               </Link>
 
               <Link
-                href="tel:+6281234567890"
+                href={`tel:+62${systemConfig?.phone}`}
                 className="flex items-center gap-2 transition-colors hover:text-primary">
-                <Phone size={20} /> +62 812 3456 7890
+                <Phone size={20} /> +62 {systemConfig?.phone}
               </Link>
             </div>
           </div>

@@ -8,6 +8,7 @@ datasource db {
 }
 
 model AppSystem {
+  id        String   @id @default(cuid())
   name      String   @unique
   config    Json
   updatedAt DateTime @updatedAt

@@ -1,12 +1,15 @@
 import { About } from "@/components/home/about";
 import { Hero } from "@/components/home/hero";
+import { getSystemConfig } from "@/data/app-system";
 
-export default function Home() {
+export default async function Home() {
+  const systemConfig = await getSystemConfig();
+
   return (
     <main className="min-h-[calc(100dvh-4rem)]">
       <Hero />
 
-      <About />
+      <About systemConfig={systemConfig} />
     </main>
   );
 }

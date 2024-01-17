@@ -1,0 +1,17 @@
+import * as z from "zod";
+
+import { db } from "@/lib/db";
+import { appSystemSchema } from "@/schemas";
+
+export const getSystemConfig = async () => {
+  try {
+    const appSystem = await db.appSystem.findUnique({ where: { name: "g19" } });
+    const systemConfig = appSystem?.config as
+      | z.infer<typeof appSystemSchema>
+      | undefined;
+
+    return systemConfig || null;
+  } catch (e) {
+    return null;
+  }
+};
