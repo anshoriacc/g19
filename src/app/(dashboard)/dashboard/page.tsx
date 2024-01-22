@@ -17,5 +17,11 @@ export default async function DashboardPage() {
     <p className="mb-40">Dashboard</p>
     <p className="mb-40">Dashboard</p>
     <p className="mb-40">Dashboard</p>
+    <p className="mb-40">Dashboard</p>
+    <p className="mb-40">Dashboard</p>
+    <p className="mb-40">Dashboard</p>
+    <p className="mb-40">Dashboard</p>
+    <p className="mb-40">Dashboard</p>
+    <p className="mb-40">Dashboard</p>
   </Container>;
 }

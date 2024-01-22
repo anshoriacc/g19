@@ -8,7 +8,7 @@ export const NavigationBarDashboard = async () => {
   const session = await auth();
 
   return (
-    <section className="overflow-hidden border-b border-b-neutral-200 bg-white dark:border-b-neutral-800 dark:bg-neutral-950">
+    <section className="sticky top-0 overflow-hidden border-b border-b-neutral-200 bg-white dark:border-b-neutral-800 dark:bg-neutral-950">
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6">
         <div className="hidden md:block">
           <Logo />

@@ -16,7 +16,7 @@ export const SidebarMobile = () => {
         </Button>
       </SheetTrigger>
 
-      <SheetContent className="w-60" side="left">
+      <SheetContent className="w-60 border-r-neutral-200 dark:border-r-neutral-800" side="left">
         <div className="flex h-full flex-col gap-6">
           <SheetHeader className="self-center">
             <Logo />

@@ -54,7 +54,7 @@ export const NavigationListSidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="sticky top-6">
+    <div className="sticky top-[89px]">
       <nav className="mb-6 flex flex-col gap-2">
         {navigationList.map(item => (
           <Link key={item.href} href={item.href}>
@@ -74,7 +74,7 @@ export const NavigationListSidebar = () => {
       </nav>
 
       <nav className="flex flex-col gap-2">
-        <h4 className="p-1 text-sm">Layanan</h4>
+        <h4 className="p-1 text-sm font-semibold">Layanan</h4>
         {serviceList.map(item => (
           <Link key={item.href} href={item.href}>
             <Button
