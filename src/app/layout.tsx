@@ -11,13 +11,17 @@ import { getSystemConfig } from "@/data/app-system";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: {
-    template: "%s | G19 Tour & Travel",
-    default: "G19 Tour & Travel",
-  },
-  description: "G19 Tour & Travel website",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const systemConfig = await getSystemConfig();
+
+  return {
+    title: {
+      template: `%s | ${systemConfig?.title ?? "G19 Tour & Travel"}`,
+      default: systemConfig?.title ?? "G19 Tour & Travel",
+    },
+    description: systemConfig?.description ?? "G19 Tour & Travel website",
+  };
+}
 
 export default async function RootLayout({ children }: PropsWithChildren) {
   const session = await auth();

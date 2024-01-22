@@ -43,15 +43,12 @@ export const About = ({ systemConfig }: Props) => {
           kanit.className,
           "self-center bg-gradient-to-b from-neutral-900 from-60% to-neutral-500 bg-clip-text text-center text-3xl text-transparent md:text-4xl dark:from-neutral-50",
         )}>
-        G19 Tour & Travel
+        {systemConfig?.title ?? "G19 Tour & Travel"}
       </h1>
 
       <div className="flex flex-1 flex-col items-center gap-4">
         <p className="text-center text-neutral-500">
-          G19 Tour & Travel menawarkan pengalaman rental kendaraan dan
-          perjalanan wisata yang tak terlupakan. Dengan armada kendaraan
-          berkualitas dan paket wisata menarik, kami hadir untuk memenuhi
-          kebutuhan perjalanan anda.
+          {systemConfig?.description}
         </p>
 
         <Link

@@ -19,7 +19,7 @@ export const Footer = async () => {
             <ScrollToTopLogo systemConfig={systemConfig} />
 
             <div className="flex flex-col items-start gap-2">
-              <p>Jl. Margo Basuki Mulyoagung Kec. Dau Kab. Malang</p>
+              <p>{systemConfig?.address}</p>
 
               <Link
                 href="mailto:g19tourtravel@gmail.com"
