@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { Container } from "@/components/layout/container";
 import { ProductList } from "@/components/service/product-list";
 import { LoadingPlaceholder } from "@/components/service/loading-placeholder";
+import { SearchBar } from "@/components/service/search-bar";
 
 export async function generateStaticParams() {
   return ["rental", "tour", "carter"].map(type => ({
@@ -31,8 +32,10 @@ export default async function ProductPage({ params, searchParams }: Props) {
   const { type } = params;
 
   return (
-    <Container className="space-y-6">
-      <h1 className="capitalize">{type}</h1>
+    <Container className="flex flex-col gap-6">
+      <h1 className="text-2xl font-bold capitalize">{type}</h1>
+
+      <SearchBar type={type} />
 
       <Suspense fallback={<LoadingPlaceholder />}>
         <ProductList type={type} searchParams={searchParams} />

@@ -4,6 +4,15 @@ import { AlertCircle, PackageOpen } from "lucide-react";
 
 import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { db } from "@/lib/db";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "../ui/pagination";
 
 type Props = {
   type: "rental" | "tour" | "carter";
@@ -11,24 +20,13 @@ type Props = {
 };
 
 export const ProductList = async ({ type, searchParams }: Props) => {
-  let data:
-    | Prisma.VehicleGetPayload<{ include: { vehicleImages: true } }>[]
-    | Prisma.TourGetPayload<{ include: { tourImages: true } }>[]
-    | Prisma.CarterGetPayload<{ include: { carterImages: true } }>[]
-    | null = null;
+  const vehicle = await db.vehicle.findMany({
+    include: { vehicleImages: true },
+  });
+  const tour = await db.tour.findMany({ include: { tourImages: true } });
+  const carter = await db.carter.findMany({ include: { carterImages: true } });
 
-  if (type === "rental") {
-    data = await db.vehicle.findMany({ include: { vehicleImages: true } });
-    if (!data) data = null;
-  } else if (type === "tour") {
-    data = await db.tour.findMany({ include: { tourImages: true } });
-    if (!data) data = null;
-  } else if (type === "carter") {
-    data = await db.carter.findMany({ include: { carterImages: true } });
-    if (!data) data = null;
-  }
-
-  if (data === null) {
+  if (!vehicle && !tour && !carter) {
     return (
       <Alert variant="destructive" className="bg-white dark:bg-neutral-950">
         <AlertCircle className="h-4 w-4" />
@@ -41,19 +39,30 @@ export const ProductList = async ({ type, searchParams }: Props) => {
   }
 
   return (
-    <section className="flex flex-wrap justify-center gap-6">
-      {data.length > 0 ? (
-        data.map((product, index) => (
-          <ProductCard key={index} type={type} product={product} />
-        ))
-      ) : (
-        <div className="flex flex-col items-center text-neutral-300 dark:text-neutral-700">
-          <PackageOpen className="h-20 w-20" />
-          <p>
-            <span className="capitalize">{type}</span> belum tersedia
-          </p>
-        </div>
-      )}
-    </section>
+    <>
+      <section className="flex flex-1 flex-wrap gap-6">
+        {type === "rental" && vehicle.length > 0 ? (
+          vehicle.map((item, index) => (
+            <ProductCard key={index} type={type} vehicle={item} />
+          ))
+        ) : type === "tour" && tour.length > 0 ? (
+          tour.map((item, index) => (
+            <ProductCard key={index} type={type} tour={item} />
+          ))
+        ) : type === "carter" && carter.length > 0 ? (
+          carter.map((item, index) => (
+            <ProductCard key={index} type={type} carter={item} />
+          ))
+        ) : (
+          <div className="flex flex-1 flex-col items-center text-neutral-300 dark:text-neutral-700">
+            <PackageOpen className="h-20 w-20" />
+
+            <p>
+              <span className="capitalize">{type}</span> belum tersedia
+            </p>
+          </div>
+        )}
+      </section>
+    </>
   );
 };

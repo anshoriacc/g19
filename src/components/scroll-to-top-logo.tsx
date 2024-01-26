@@ -14,6 +14,7 @@ export const ScrollToTopLogo = ({ systemConfig }: Props) => {
   return (
     <div className="overflow-hidden">
       <a
+        href=""
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className={cn(
           "cursor-pointer select-none text-5xl",
