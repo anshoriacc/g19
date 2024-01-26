@@ -28,7 +28,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 
   const systemConfig = await getSystemConfig();
 
-  if (!systemConfig) throw new Error("Failed to fetch system config");
+  if (!systemConfig) throw Error("Failed to fetch system config");
 
   return (
     <html lang="id">

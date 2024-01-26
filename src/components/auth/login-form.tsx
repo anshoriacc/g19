@@ -30,7 +30,7 @@ import { cn } from "@/lib/utils";
 export const LoginForm = () => {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>("");
-  const [_, setSuccess] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -43,19 +43,17 @@ export const LoginForm = () => {
       setSuccess("");
 
       startTransition(() => {
-        login(values)
-          .then(data => {
-            if (data?.error) {
-              form.reset();
-              setError(data.error);
-            }
+        login(values).then(data => {
+          if (data?.error) {
+            form.reset();
+            setError(data.error);
+          }
 
-            if (data.success) {
-              form.reset();
-              setSuccess(data.success);
-            }
-          })
-          .catch(() => setError("Terjadi kesalahan, silakan coba lagi."));
+          if (data.success) {
+            form.reset();
+            setSuccess(data.success);
+          }
+        });
       });
     },
     [form],
@@ -121,17 +119,15 @@ export const LoginForm = () => {
 
               <p
                 className={cn(
-                  "text-sm font-medium text-red-500 opacity-0 dark:text-red-900",
-                  error && "opacity-100",
+                  "text-sm font-medium  opacity-0",
+                  error && "text-red-500 opacity-100 dark:text-red-900",
+                  success && "text-green-500 opacity-100 dark:text-green-900",
                 )}>
-                {error}
+                {success || error}
               </p>
 
               {/* <div className="flex"> */}
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={isPending}>
+              <Button type="submit" className="w-full" disabled={isPending}>
                 Masuk
               </Button>
               {/* </div> */}

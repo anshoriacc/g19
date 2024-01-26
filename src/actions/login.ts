@@ -13,6 +13,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
       password: values.password,
       redirectTo: "/dashboard",
     });
+
     return { success: "Login sukses" };
   } catch (error) {
     if (error instanceof AuthError) {
