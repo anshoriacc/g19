@@ -4,14 +4,8 @@ import { db } from "@/lib/db";
 import { appSystemSchema } from "@/schemas";
 
 export const getSystemConfig = async () => {
-  try {
-    const appSystem = await db.appSystem.findUnique({ where: { name: "g19" } });
-    const systemConfig = appSystem?.config as
-      | z.infer<typeof appSystemSchema>
-      | undefined;
+  const appSystem = await db.appSystem.findUnique({ where: { name: "g19" } });
+  const systemConfig = appSystem?.config;
 
-    return systemConfig || null;
-  } catch (e) {
-    return null;
-  }
+  return systemConfig;
 };

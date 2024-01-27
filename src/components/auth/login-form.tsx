@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion } from "framer-motion";
+import { Loader2 } from "lucide-react";
 
 import {
   Form,
@@ -126,11 +127,10 @@ export const LoginForm = () => {
                 {success || error}
               </p>
 
-              {/* <div className="flex"> */}
               <Button type="submit" className="w-full" disabled={isPending}>
+                {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Masuk
               </Button>
-              {/* </div> */}
             </form>
           </Form>
         </CardContent>
