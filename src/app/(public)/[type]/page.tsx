@@ -2,9 +2,9 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 
 import { Container } from "@/components/layout/container";
-import { ProductList } from "@/components/service/product-list";
-import { LoadingPlaceholder } from "@/components/service/loading-placeholder";
-import { SearchBar } from "@/components/service/search-bar";
+import { ProductList } from "@/components/product/product-list";
+import { LoadingPlaceholder } from "@/components/product/loading-placeholder";
+import { SearchBar } from "@/components/product/search-bar";
 
 export async function generateStaticParams() {
   return ["rental", "tour", "carter"].map(type => ({
@@ -14,11 +14,6 @@ export async function generateStaticParams() {
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
-
-type Props = {
-  params: { type: "rental" | "tour" | "carter" };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { type } = params;
@@ -43,3 +38,8 @@ export default async function ProductPage({ params, searchParams }: Props) {
     </Container>
   );
 }
+
+type Props = {
+  params: { type: "rental" | "tour" | "carter" };
+  searchParams: { [key: string]: string | string[] | undefined };
+};

@@ -1,16 +1,17 @@
 "use client";
 
-import { Prisma } from "@prisma/client";
+import Link from "next/link";
+import { Hourglass, KeySquare, LifeBuoy, Users } from "lucide-react";
 
 import { Card, CardContent } from "../ui/card";
 import { delimiterFormatter } from "@/lib/utils";
-import Link from "next/link";
+import { TCarter, TTour, TVehicle } from "@/data/product";
 
 type Props = {
   type: "rental" | "tour" | "carter";
-  vehicle?: Prisma.VehicleGetPayload<{ include: { vehicleImages: true } }>;
-  tour?: Prisma.TourGetPayload<{ include: { tourImages: true } }>;
-  carter?: Prisma.CarterGetPayload<{ include: { carterImages: true } }>;
+  vehicle?: TVehicle;
+  tour?: TTour;
+  carter?: TCarter;
 };
 
 export const ProductCard = ({ type, vehicle, tour, carter }: Props) => {
@@ -40,28 +41,38 @@ export const ProductCard = ({ type, vehicle, tour, carter }: Props) => {
             {vehicle?.name ?? tour?.name ?? carter?.name}
           </h3>
 
-          <ul className="text-neutral-500">
-            <li>capacity</li>
-            <li>capacity</li>
+          <ul className="uppercase text-neutral-500">
+            <li className="flex items-center gap-1">
+              <Users size={18} />
+              {vehicle?.capacity ?? tour?.capacity ?? carter?.capacity} orang
+            </li>
+
+            {type === "rental" && (
+              <>
+                <li className="flex items-center gap-1">
+                  <KeySquare size={18} />
+                  {vehicle?.isDriverMandatory ? "WAJIB DRIVER" : "LEPAS KUNCI"}
+                </li>
+
+                <li className="flex items-center gap-1">
+                  <LifeBuoy size={18} />
+                  {vehicle?.transmission ? "WAJIB DRIVER" : "LEPAS KUNCI"}
+                </li>
+              </>
+            )}
+
+            {type === "tour" && (
+              <>
+                <li className="flex items-center gap-1">
+                  <Hourglass size={18} />
+                  {tour?.duration}
+                  hari
+                </li>
+              </>
+            )}
           </ul>
 
-          {type === "rental" && (
-            <p className="text-neutral-500">
-              <span>FEATURE 1</span>
-              <span>FEATURE 2</span>
-              <span>FEATURE 3</span>
-            </p>
-          )}
-
-          {type === "tour" && (
-            <p className="text-neutral-500">
-              <span>FEATURE 1</span>
-              <span>FEATURE 2</span>
-              <span>FEATURE 3</span>
-            </p>
-          )}
-
-          <p className="line-clamp-1 text-ellipsis">
+          <h4 className="line-clamp-1 text-ellipsis">
             <span className="text-xl font-bold text-accent-dark dark:text-accent-light">
               Rp.{" "}
               {delimiterFormatter(
@@ -69,8 +80,10 @@ export const ProductCard = ({ type, vehicle, tour, carter }: Props) => {
               )}
             </span>
 
-            <span className="text-neutral-500"> /hari</span>
-          </p>
+            {type === "rental" && (
+              <span className="text-neutral-500"> /hari</span>
+            )}
+          </h4>
         </CardContent>
       </Card>
     </Link>

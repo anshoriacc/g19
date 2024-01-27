@@ -53,6 +53,23 @@ export const getProductDetail = async ({
   }
 };
 
+export type TVehicle = Prisma.VehicleGetPayload<{
+  include: { vehicleImages: true };
+}>;
+
+export type TTour = Prisma.TourGetPayload<{
+  include: {
+    tourImages: true;
+    tourDates: true;
+    tourHighlights: true;
+    tourItineraries: true;
+  };
+}>;
+
+export type TCarter = Prisma.CarterGetPayload<{
+  include: { carterImages: true };
+}>;
+
 type TGetProductListParams = {
   type: "rental" | "tour" | "carter";
   whereClause: any;

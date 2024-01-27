@@ -1,9 +1,8 @@
 import { AlertCircle, PackageOpen } from "lucide-react";
-import { Prisma } from "@prisma/client";
 
 import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { ProductCard } from "./product-card";
-import { getProductList } from "@/data/product";
+import { TCarter, TTour, TVehicle, getProductList } from "@/data/product";
 
 type Props = {
   type: "rental" | "tour" | "carter";
@@ -46,39 +45,15 @@ export const ProductList = async ({ type, searchParams }: Props) => {
     <section className="flex flex-1 flex-wrap justify-center gap-6 lg:justify-start">
       {type === "rental" && data.length > 0 ? (
         data.map((item, index) => (
-          <ProductCard
-            key={index}
-            type={type}
-            vehicle={
-              item as Prisma.VehicleGetPayload<{
-                include: { vehicleImages: true };
-              }>
-            }
-          />
+          <ProductCard key={index} type={type} vehicle={item as TVehicle} />
         ))
       ) : type === "tour" && data.length > 0 ? (
         data.map((item, index) => (
-          <ProductCard
-            key={index}
-            type={type}
-            tour={
-              item as Prisma.TourGetPayload<{
-                include: { tourImages: true };
-              }>
-            }
-          />
+          <ProductCard key={index} type={type} tour={item as TTour} />
         ))
       ) : type === "carter" && data.length > 0 ? (
         data.map((item, index) => (
-          <ProductCard
-            key={index}
-            type={type}
-            carter={
-              item as Prisma.CarterGetPayload<{
-                include: { carterImages: true };
-              }>
-            }
-          />
+          <ProductCard key={index} type={type} carter={item as TCarter} />
         ))
       ) : (
         <div className="flex flex-1 flex-col items-center text-neutral-500">
