@@ -37,11 +37,11 @@ export const ProductCard = ({ type, vehicle, tour, carter }: Props) => {
         />
 
         <CardContent className="space-y-2 p-4">
-          <h3 className="line-clamp-2 text-ellipsis text-lg font-bold transition-all duration-300">
+          <h3 className="line-clamp-2 text-ellipsis font-bold transition-all duration-300">
             {vehicle?.name ?? tour?.name ?? carter?.name}
           </h3>
 
-          <ul className="uppercase text-neutral-500">
+          <ul className="uppercase text-neutral-500 text-sm">
             <li className="flex items-center gap-1">
               <Users size={18} />
               {vehicle?.capacity ?? tour?.capacity ?? carter?.capacity} orang
@@ -73,7 +73,7 @@ export const ProductCard = ({ type, vehicle, tour, carter }: Props) => {
           </ul>
 
           <h4 className="line-clamp-1 text-ellipsis">
-            <span className="text-xl font-bold text-accent-dark dark:text-accent-light">
+            <span className="text-lg font-bold text-accent-dark dark:text-accent-light">
               Rp.{" "}
               {delimiterFormatter(
                 vehicle?.price ?? tour?.price ?? carter?.price ?? 0,

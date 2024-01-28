@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: {
-      template: `%s | ${systemConfig?.title ?? "G19 Tour & Travel"}`,
+      template: `%s – ${systemConfig?.title ?? "G19 Tour & Travel"}`,
       default: systemConfig?.title ?? "G19 Tour & Travel",
     },
     description: systemConfig?.description ?? "G19 Tour & Travel website",

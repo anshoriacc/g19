@@ -34,9 +34,7 @@ export const ProductList = async ({ type, searchParams }: Props) => {
 
         <AlertTitle>Error!</AlertTitle>
 
-        <AlertDescription>
-          Terjadi kesalahan, silakan coba lagi.
-        </AlertDescription>
+        <AlertDescription>Terjadi kesalahan, silakan refresh.</AlertDescription>
       </Alert>
     );
   }
