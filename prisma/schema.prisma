@@ -78,6 +78,7 @@ model Vehicle {
   updatedAt         DateTime     @updatedAt
 
   vehicleImages VehicleImage[]
+  highlights    Highlight[]
   reservations  Reservation[]
 }
 
@@ -102,9 +103,9 @@ model Tour {
   updatedAt    DateTime         @updatedAt
 
   tourImages      TourImage[]
-  tourHighlights  TourHighlight[]
   tourItineraries TourItinerary[]
   tourDates       TourDate[]
+  highlights      Highlight[]
   reservations    Reservation[]
 }
 
@@ -116,18 +117,21 @@ model TourImage {
   tourId String?
 }
 
-model TourHighlight {
+model Highlight {
   id        Int    @id @default(autoincrement())
   highlight String
 
-  Tour   Tour?   @relation(fields: [tourId], references: [id])
-  tourId String?
+  Vehicle   Vehicle? @relation(fields: [vehicleId], references: [id])
+  vehicleId String?
+  Tour      Tour?    @relation(fields: [tourId], references: [id])
+  tourId    String?
+  Carter    Carter?  @relation(fields: [carterId], references: [id])
+  carterId  String?
 }
 
 model TourItinerary {
-  id        Int      @id @default(autoincrement())
-  time      String[]
-  itinerary String[]
+  id        Int  @id @default(autoincrement())
+  itinerary Json
 
   Tour   Tour?   @relation(fields: [tourId], references: [id])
   tourId String?
@@ -154,6 +158,7 @@ model Carter {
 
   carterImages CarterImage[]
   reservations Reservation[]
+  highlights   Highlight[]
 }
 
 model CarterImage {
