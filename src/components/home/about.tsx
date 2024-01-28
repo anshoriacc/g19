@@ -24,7 +24,7 @@ import { appSystemSchema } from "@/schemas";
 
 const kanit = Kanit({ weight: ["700"], subsets: ["latin"] });
 
-type Props = { systemConfig: z.infer<typeof appSystemSchema> | null };
+type Props = { systemConfig?: z.infer<typeof appSystemSchema> };
 
 export const About = ({ systemConfig }: Props) => {
   return (
@@ -41,7 +41,7 @@ export const About = ({ systemConfig }: Props) => {
       <h1
         className={cn(
           kanit.className,
-          "self-center bg-gradient-to-b from-neutral-900 from-60% to-neutral-500 bg-clip-text text-center text-3xl text-transparent dark:from-neutral-50 md:text-4xl",
+          "self-center bg-gradient-to-b from-neutral-900 from-60% to-neutral-500 bg-clip-text text-center text-3xl text-transparent md:text-4xl dark:from-neutral-50",
         )}>
         {systemConfig?.title ?? "G19 Tour & Travel"}
       </h1>
