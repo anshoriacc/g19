@@ -6,14 +6,13 @@ import { ProductList } from "@/components/product/product-list";
 import { LoadingPlaceholder } from "@/components/product/loading-placeholder";
 import { SearchBar } from "@/components/product/search-bar";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return ["rental", "tour", "carter"].map(type => ({
     type,
   }));
 }
-
-export const dynamic = "force-static";
-export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { type } = params;

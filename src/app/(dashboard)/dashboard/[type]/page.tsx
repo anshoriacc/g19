@@ -8,11 +8,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export const dynamic = "force-static";
 export const dynamicParams = false;
 
 type Props = {
-  params: { type: string };
+  params: { type: "rental" | "tour" | "carter" };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

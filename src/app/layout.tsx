@@ -26,10 +26,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RootLayout({ children }: PropsWithChildren) {
   const session = await auth();
 
-  const systemConfig = await getSystemConfig();
-
-  if (!systemConfig) throw Error("Failed to fetch system config");
-
   return (
     <html lang="id">
       <body

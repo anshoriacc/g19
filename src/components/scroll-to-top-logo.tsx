@@ -8,7 +8,7 @@ import { appSystemSchema } from "@/schemas";
 
 const kanit = Kanit({ weight: ["700"], subsets: ["latin"] });
 
-type Props = { systemConfig: z.infer<typeof appSystemSchema> | null };
+type Props = { systemConfig?: z.infer<typeof appSystemSchema> };
 
 export const ScrollToTopLogo = ({ systemConfig }: Props) => {
   return (

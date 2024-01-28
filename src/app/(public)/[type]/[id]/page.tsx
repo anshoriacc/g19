@@ -8,6 +8,12 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { delimiterFormatter } from "@/lib/utils";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { type, id } = params;
@@ -15,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: data?.name,
+    description: data?.description,
   };
 }
 
@@ -54,7 +61,7 @@ export default async function ProductDetailPage({ params }: Props) {
             </div>
           </div>
 
-          <section className="flex flex-col gap-6">
+          <section className="flex flex-col gap-4">
             <div className="flex flex-wrap gap-4 uppercase">
               <Badge
                 variant="secondary"
@@ -94,8 +101,44 @@ export default async function ProductDetailPage({ params }: Props) {
 
             <p>{data?.description}</p>
 
+            <Accordion type="multiple" className="w-full space-y-2 *:border-0 ">
+              {data && data.highlights.length > 0 && (
+                <AccordionItem value="highlights">
+                  <AccordionTrigger className="rounded-md p-2 font-semibold transition-all hover:bg-neutral-100 hover:no-underline dark:hover:bg-neutral-900">
+                    Highlights
+                  </AccordionTrigger>
+
+                  <AccordionContent className="px-4">
+                    <ul className="space-y-2">
+                      {data.highlights.map((highlight, index) => (
+                        <li key={index}>{highlight.highlight}</li>
+                      ))}
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              )}
+
+              {/* {type === "rental" &&
+                data &&
+                (data as TTour).tourItineraries.length > 0 && (
+                  <AccordionItem value="itineraries">
+                    <AccordionTrigger className="rounded-md p-2 font-semibold transition-all hover:bg-neutral-100 hover:no-underline dark:hover:bg-neutral-900">
+                      Itineraries
+                    </AccordionTrigger>
+
+                    <AccordionContent className="px-4">
+                      <ul className="space-y-2">
+                        <li>itineraries1</li>
+                        <li>itineraries2</li>
+                        <li>itineraries3</li>
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+                )} */}
+            </Accordion>
+
             <div className="mt-auto flex flex-col gap-4">
-              <h4 className="line-clamp-1 text-ellipsis">
+              <h3 className="line-clamp-1 text-ellipsis">
                 <span className="text-3xl font-bold text-accent-dark dark:text-accent-light">
                   Rp. {delimiterFormatter(data?.price ?? 0)}
                 </span>
@@ -103,7 +146,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 {type === "rental" && (
                   <span className="text-neutral-500"> /hari</span>
                 )}
-              </h4>
+              </h3>
 
               <Button>Reservasi</Button>
             </div>

@@ -30,44 +30,44 @@ export const getProductList = async ({
 export const getProductDetail = async ({
   type,
   id,
-}: TGETProductDetailParams) => {
+}: TGetProductDetailParams) => {
   if (type === "rental") {
     return await db.vehicle.findUnique({
-      include: { vehicleImages: true },
+      include: { vehicleImages: true, highlights: true },
       where: { id },
     });
   } else if (type === "tour") {
     return await db.tour.findUnique({
       include: {
         tourImages: true,
-        tourHighlights: true,
+        highlights: true,
         tourItineraries: true,
       },
       where: { id },
     });
   } else if (type === "carter") {
     return await db.carter.findUnique({
-      include: { carterImages: true },
+      include: { carterImages: true, highlights: true },
       where: { id },
     });
   }
 };
 
 export type TVehicle = Prisma.VehicleGetPayload<{
-  include: { vehicleImages: true };
+  include: { vehicleImages: true; highlights: true };
 }>;
 
 export type TTour = Prisma.TourGetPayload<{
   include: {
     tourImages: true;
     tourDates: true;
-    tourHighlights: true;
+    highlights: true;
     tourItineraries: true;
   };
 }>;
 
 export type TCarter = Prisma.CarterGetPayload<{
-  include: { carterImages: true };
+  include: { carterImages: true; highlights: true };
 }>;
 
 type TGetProductListParams = {
@@ -76,7 +76,7 @@ type TGetProductListParams = {
   orderByClause: any;
 };
 
-type TGETProductDetailParams = {
+type TGetProductDetailParams = {
   type: "rental" | "tour" | "carter";
   id: string;
 };
