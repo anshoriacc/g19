@@ -3,7 +3,12 @@ import { notFound } from "next/navigation";
 import { Hourglass, KeySquare, LifeBuoy, Users } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
-import { TTour, TVehicle, getProductDetail } from "@/data/product";
+import {
+  TTour,
+  TVehicle,
+  getProductDetail,
+  getProductList,
+} from "@/data/product";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,6 +19,19 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+export async function generateStaticParams() {
+  return ["rental", "tour", "carter"].map(async type => {
+    const data = (
+      await getProductList({ type: type as "rental" | "tour" | "carter" })
+    )?.map(product => ({
+      type,
+      id: product.id,
+    }));
+
+    return data;
+  });
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { type, id } = params;
@@ -45,17 +63,17 @@ export default async function ProductDetailPage({ params }: Props) {
               src={"/assets/fallback.webp"}
               alt={`${data?.name} image`}
               loading="lazy"
-              className="pointer-events-none aspect-[4/3] w-full max-w-[646.8px] animate-reveal justify-self-center rounded-lg bg-neutral-100 object-cover dark:bg-neutral-850"
+              className="pointer-events-none aspect-[4/3] w-full max-w-[640px] animate-reveal self-center justify-self-center rounded-lg bg-neutral-100 object-cover dark:bg-neutral-850"
             />
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid max-w-[640px] grid-cols-3 gap-4 self-center justify-self-center">
               {[...Array(3)].map((_, index) => (
                 <img
                   key={index}
                   src={"/assets/fallback.webp"}
                   alt={`${data?.name} image`}
                   loading="lazy"
-                  className="pointer-events-none aspect-[4/3] w-full max-w-[646.8px] animate-reveal justify-self-center rounded-lg bg-neutral-100 object-cover dark:bg-neutral-850"
+                  className="pointer-events-none aspect-[4/3] w-full animate-reveal justify-self-center rounded-lg bg-neutral-100 object-cover dark:bg-neutral-850"
                 />
               ))}
             </div>
@@ -90,11 +108,11 @@ export default async function ProductDetailPage({ params }: Props) {
 
               {type === "tour" && (
                 <>
-                  <li className="flex items-center gap-1 bg-primary/20 text-sm font-normal hover:bg-primary/15 dark:bg-primary/20 dark:hover:bg-primary/15">
+                  <Badge className="flex items-center gap-1 bg-primary/20 text-sm font-normal hover:bg-primary/15 dark:bg-primary/20 dark:hover:bg-primary/15">
                     <Hourglass size={18} />
                     {(data as TTour)?.duration}
                     hari
-                  </li>
+                  </Badge>
                 </>
               )}
             </div>
