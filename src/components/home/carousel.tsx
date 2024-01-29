@@ -2,11 +2,19 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
+import { Kanit } from "next/font/google";
+import * as z from "zod";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
-export const Carousel = () => {
+import { TBanner } from "@/data/banner";
+import { cn } from "@/lib/utils";
+import { appSystemSchema } from "@/schemas";
+
+const kanit = Kanit({ weight: ["700"], subsets: ["latin"] });
+
+export const Carousel = ({ images, systemConfig }: Props) => {
   return (
     <section className="w-full">
       <Swiper
@@ -19,12 +27,42 @@ export const Carousel = () => {
         autoplay
         loop
         className="hero h-full w-full">
-        {[...Array(10)].map((_, index) => (
-          <SwiperSlide key={index} className="max-w-[1200px] p-6">
-            <div className="flex aspect-[3] items-center justify-center overflow-hidden rounded-3xl border border-neutral-200 bg-white duration-300 dark:border-neutral-800 dark:bg-neutral-950"></div>
+        {images.length > 0 ? (
+          images.map((_, index) => (
+            <SwiperSlide key={index} className="max-w-[1200px] p-6">
+              <img
+                src={"/assets/fallback.webp"}
+                alt={`banner${index}`}
+                loading="lazy"
+                className="pointer-events-none aspect-[3] w-full animate-reveal overflow-hidden rounded-3xl bg-white object-cover dark:bg-neutral-950"
+                onError={e => {
+                  (e.target as HTMLImageElement).onerror = null;
+                  (e.target as HTMLImageElement).src = "/assets/fallback.webp";
+                }}
+              />
+            </SwiperSlide>
+          ))
+        ) : (
+          <SwiperSlide className="max-w-[1200px] p-6">
+            <div className="pointer-events-none flex aspect-[3] w-full items-center justify-center overflow-hidden rounded-3xl bg-white dark:bg-neutral-950">
+              <div
+                className={cn(
+                  "select-none text-5xl md:text-8xl font-bold",
+                  "bg-gradient-to-b from-neutral-500 from-60% bg-clip-text text-transparent",
+                )}>
+                <span className={kanit.className}>
+                  {systemConfig?.logoTitle ?? "G19"}
+                </span>
+              </div>
+            </div>
           </SwiperSlide>
-        ))}
+        )}
       </Swiper>
     </section>
   );
+};
+
+type Props = {
+  images: TBanner[];
+  systemConfig?: z.infer<typeof appSystemSchema>;
 };
