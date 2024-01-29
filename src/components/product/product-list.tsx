@@ -4,7 +4,24 @@ import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { ProductCard } from "./product-card";
 import { TCarter, TTour, TVehicle, getProductList } from "@/data/product";
 
-export const ProductList = async ({ type, data }: Props) => {
+export const ProductList = async ({ type, searchParams }: Props) => {
+  const { q = "", price = "" } = searchParams;
+
+  const whereClause = {
+    name: { contains: q, mode: "insensitive" },
+  };
+
+  const orderByClause = [
+    price === "highest"
+      ? { price: "desc" }
+      : price === "lowest"
+        ? { price: "asc" }
+        : {},
+    { createdAt: "desc" },
+  ];
+
+  const data = await getProductList({ type, whereClause, orderByClause });
+
   if (!data) {
     return (
       <Alert variant="destructive" className="bg-white dark:bg-neutral-950">
@@ -33,7 +50,7 @@ export const ProductList = async ({ type, data }: Props) => {
         ))
       ) : (
         <div className="flex flex-1 flex-col items-center text-neutral-500">
-          <PackageOpen className="h-20 w-20" />
+          <PackageOpen className="mt-20 h-20 w-20" />
 
           <p>
             <span className="capitalize">{type}</span> belum tersedia.
@@ -46,5 +63,5 @@ export const ProductList = async ({ type, data }: Props) => {
 
 type Props = {
   type: "rental" | "tour" | "carter";
-  data?: Partial<TVehicle>[] | Partial<TTour>[] | Partial<TCarter>[];
+  searchParams: { [key: string]: string | string[] | undefined };
 };

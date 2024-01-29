@@ -1,9 +1,10 @@
+import { Suspense } from "react";
 import { Metadata } from "next";
 
 import { Container } from "@/components/layout/container";
 import { ProductList } from "@/components/product/product-list";
-import { SearchBar } from "@/components/product/search-bar";
-import { getProductList } from "@/data/product";
+import { FilterAndSort } from "@/components/product/filter-and-sort";
+import { LoadingPlaceholder } from "@/components/product/loading-placeholder";
 
 export const dynamicParams = false;
 
@@ -23,30 +24,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params, searchParams }: Props) {
   const { type } = params;
-  const { q = "", price = "" } = searchParams;
-
-  const whereClause = {
-    name: { contains: q, mode: "insensitive" },
-  };
-
-  const orderByClause = [
-    price === "highest"
-      ? { price: "desc" }
-      : price === "lowest"
-        ? { price: "asc" }
-        : {},
-    { createdAt: "desc" },
-  ];
-
-  const data = await getProductList({ type, whereClause, orderByClause });
 
   return (
     <Container className="flex flex-col gap-6">
       <h1 className="text-2xl font-bold capitalize">{type}</h1>
 
-      <SearchBar type={type} />
+      <FilterAndSort type={type} />
 
-      <ProductList type={type} data={data} />
+      <Suspense fallback={<LoadingPlaceholder />}>
+        <ProductList type={type} searchParams={searchParams} />
+      </Suspense>
     </Container>
   );
 }
