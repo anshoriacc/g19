@@ -20,18 +20,18 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-export async function generateStaticParams() {
-  return ["rental", "tour", "carter"].map(async type => {
-    const data = (
-      await getProductList({ type: type as "rental" | "tour" | "carter" })
-    )?.map(product => ({
-      type,
-      id: product.id,
-    }));
+// export async function generateStaticParams() {
+//   return ["rental", "tour", "carter"].map(async type => {
+//     const data = (
+//       await getProductList({ type: type as "rental" | "tour" | "carter" })
+//     )?.map(product => ({
+//       type,
+//       id: product.id,
+//     }));
 
-    return data;
-  });
-}
+//     return data;
+//   });
+// }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { type, id } = params;
