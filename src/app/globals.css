@@ -17,3 +17,15 @@ body {
 .swiper-pagination-bullet-active {
   background: #00aeef !important;
 }
+
+.swiper-detail {
+  --swiper-navigation-color: #00aeef;
+  --swiper-navigation-size: 1.5rem;
+}
+
+.swiper-detail-thumb .swiper-slide {
+  opacity: 0.5;
+}
+.swiper-detail-thumb .swiper-slide-thumb-active {
+  opacity: 1;
+}

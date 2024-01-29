@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 
 import { CarouselCard } from "./carousel-card";
 
-export const Hero = () => {
+export const Carousel = () => {
   return (
     <section className="w-full">
       <Swiper

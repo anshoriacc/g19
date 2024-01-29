@@ -4,29 +4,7 @@ import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { ProductCard } from "./product-card";
 import { TCarter, TTour, TVehicle, getProductList } from "@/data/product";
 
-type Props = {
-  type: "rental" | "tour" | "carter";
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
-export const ProductList = async ({ type, searchParams }: Props) => {
-  const { q = "", price = "" } = searchParams;
-
-  const whereClause = {
-    name: { contains: q, mode: "insensitive" },
-  };
-
-  const orderByClause = [
-    price === "highest"
-      ? { price: "desc" }
-      : price === "lowest"
-        ? { price: "asc" }
-        : {},
-    { createdAt: "desc" },
-  ];
-
-  const data = await getProductList({ type, whereClause, orderByClause });
-
+export const ProductList = async ({ type, data }: Props) => {
   if (!data) {
     return (
       <Alert variant="destructive" className="bg-white dark:bg-neutral-950">
@@ -64,4 +42,9 @@ export const ProductList = async ({ type, searchParams }: Props) => {
       )}
     </section>
   );
+};
+
+type Props = {
+  type: "rental" | "tour" | "carter";
+  data?: Partial<TVehicle>[] | Partial<TTour>[] | Partial<TCarter>[];
 };

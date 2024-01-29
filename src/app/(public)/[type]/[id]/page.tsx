@@ -4,6 +4,7 @@ import { Hourglass, KeySquare, LifeBuoy, Users } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import {
+  TCarter,
   TTour,
   TVehicle,
   getProductDetail,
@@ -19,6 +20,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Carousel } from "@/components/product-detail/carousel";
 
 // export async function generateStaticParams() {
 //   return ["rental", "tour", "carter"].map(async type => {
@@ -52,13 +54,22 @@ export default async function ProductDetailPage({ params }: Props) {
 
   if (data === null) notFound();
 
+  const images =
+    type === "rental"
+      ? (data as TVehicle).vehicleImages
+      : type === "tour"
+        ? (data as TTour).tourImages
+        : type === "carter"
+          ? (data as TCarter).carterImages
+          : [];
+
   return (
     <Container className="flex flex-col">
       <Card className="flex flex-col gap-6 p-6">
         <h1 className="text-2xl font-bold">{data?.name}</h1>
 
         <section className="grid flex-1 gap-6 lg:grid-cols-[3fr_2fr]">
-          <div className="flex flex-col gap-4">
+          {/* <div className="flex flex-col gap-4">
             <img
               src={"/assets/fallback.webp"}
               alt={`${data?.name} image`}
@@ -77,7 +88,8 @@ export default async function ProductDetailPage({ params }: Props) {
                 />
               ))}
             </div>
-          </div>
+          </div> */}
+          <Carousel images={images} />
 
           <section className="flex flex-col gap-4">
             <div className="flex flex-wrap gap-4 uppercase">

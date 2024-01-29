@@ -1,5 +1,5 @@
 import { About } from "@/components/home/about";
-import { Hero } from "@/components/home/hero";
+import { Carousel } from "@/components/home/carousel";
 import { getSystemConfig } from "@/data/app-system";
 
 export default async function Home() {
@@ -7,7 +7,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-[calc(100dvh-4rem)]">
-      <Hero />
+      <Carousel />
 
       <About systemConfig={systemConfig} />
     </main>
