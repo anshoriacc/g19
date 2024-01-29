@@ -1,8 +1,21 @@
 import { PropsWithChildren } from "react";
+import { Metadata } from "next";
 
 import { FooterMinimal } from "@/components/layout/footer-minimal";
 import { Sidebar } from "@/components/navigation/sidebar";
 import { NavigationBarDashboard } from "@/components/navigation/navigation-bar-dashboard";
+import { getSystemConfig } from "@/data/app-system";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const systemConfig = await getSystemConfig();
+
+  return {
+    title: {
+      template: `%s | Dashboard – ${systemConfig?.title ?? "G19 Tour & Travel"}`,
+      default: `Dashboard – ${systemConfig?.title ?? "G19 Tour & Travel"}`,
+    },
+  };
+}
 
 export default function DashboardLayout({ children }: PropsWithChildren) {
   return (
