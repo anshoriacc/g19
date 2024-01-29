@@ -29,6 +29,10 @@ export const Carousel = ({ images }: Props) => {
               alt={`image${index}`}
               loading="lazy"
               className="pointer-events-none aspect-[4/3] w-full max-w-[640px] animate-reveal self-center justify-self-center rounded-lg bg-neutral-100 object-cover dark:bg-neutral-850"
+              onError={e => {
+                (e.target as HTMLImageElement).onerror = null;
+                (e.target as HTMLImageElement).src = "/assets/fallback.webp";
+              }}
             />
           </SwiperSlide>
         ))}
@@ -49,6 +53,10 @@ export const Carousel = ({ images }: Props) => {
               alt={`image${index}`}
               loading="lazy"
               className="pointer-events-none aspect-[4/3] w-full animate-reveal justify-self-center rounded-lg bg-neutral-100 object-cover dark:bg-neutral-850"
+              onError={e => {
+                (e.target as HTMLImageElement).onerror = null;
+                (e.target as HTMLImageElement).src = "/assets/fallback.webp";
+              }}
             />
           </SwiperSlide>
         ))}
