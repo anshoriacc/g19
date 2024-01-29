@@ -21,14 +21,14 @@ export const Carousel = ({ images }: Props) => {
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="swiper-detail aspect-[4/3] w-full self-center justify-self-center rounded-lg bg-neutral-100 dark:bg-neutral-850">
+        className="swiper-detail aspect-[4/3] w-full self-center justify-self-center rounded-lg bg-white dark:bg-neutral-950">
         {images.map((image, index) => (
           <SwiperSlide key={index}>
             <img
               src={image.imageUrl ?? "/assets/fallback.webp"}
               alt={`image${index}`}
               loading="lazy"
-              className="pointer-events-none aspect-[4/3] w-full animate-reveal self-center justify-self-center rounded-lg bg-neutral-100 object-cover dark:bg-neutral-850"
+              className="pointer-events-none aspect-[4/3] w-full animate-reveal self-center justify-self-center rounded-lg bg-white object-cover dark:bg-neutral-950"
               onError={e => {
                 (e.target as HTMLImageElement).onerror = null;
                 (e.target as HTMLImageElement).src = "/assets/fallback.webp";
@@ -52,7 +52,7 @@ export const Carousel = ({ images }: Props) => {
               src={image.imageUrl ?? "/assets/fallback.webp"}
               alt={`image${index}`}
               loading="lazy"
-              className="pointer-events-none aspect-[4/3] w-full animate-reveal justify-self-center rounded-lg bg-neutral-100 object-cover dark:bg-neutral-850"
+              className="pointer-events-none aspect-[4/3] w-full animate-reveal justify-self-center rounded-lg bg-white object-cover dark:bg-neutral-950"
               onError={e => {
                 (e.target as HTMLImageElement).onerror = null;
                 (e.target as HTMLImageElement).src = "/assets/fallback.webp";
