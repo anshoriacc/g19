@@ -69,26 +69,6 @@ export default async function ProductDetailPage({ params }: Props) {
         <h1 className="text-2xl font-bold">{data?.name}</h1>
 
         <section className="grid flex-1 gap-6 lg:grid-cols-[3fr_2fr]">
-          {/* <div className="flex flex-col gap-4">
-            <img
-              src={"/assets/fallback.webp"}
-              alt={`${data?.name} image`}
-              loading="lazy"
-              className="pointer-events-none aspect-[4/3] w-full max-w-[640px] animate-reveal self-center justify-self-center rounded-lg bg-neutral-100 object-cover dark:bg-neutral-850"
-            />
-
-            <div className="grid max-w-[640px] grid-cols-3 gap-4 self-center justify-self-center">
-              {[...Array(3)].map((_, index) => (
-                <img
-                  key={index}
-                  src={"/assets/fallback.webp"}
-                  alt={`${data?.name} image`}
-                  loading="lazy"
-                  className="pointer-events-none aspect-[4/3] w-full animate-reveal justify-self-center rounded-lg bg-neutral-100 object-cover dark:bg-neutral-850"
-                />
-              ))}
-            </div>
-          </div> */}
           <Carousel images={images} />
 
           <section className="flex flex-col gap-4">
