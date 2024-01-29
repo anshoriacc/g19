@@ -72,8 +72,8 @@ export type TCarter = Prisma.CarterGetPayload<{
 
 type TGetProductListParams = {
   type: "rental" | "tour" | "carter";
-  whereClause: any;
-  orderByClause: any;
+  whereClause?: any;
+  orderByClause?: any;
 };
 
 type TGetProductDetailParams = {
