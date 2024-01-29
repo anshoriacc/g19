@@ -21,14 +21,14 @@ export const Carousel = ({ images }: Props) => {
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="swiper-detail aspect-[4/3] w-full max-w-[640px] self-center justify-self-center rounded-lg bg-neutral-100 dark:bg-neutral-850">
+        className="swiper-detail aspect-[4/3] w-full self-center justify-self-center rounded-lg bg-neutral-100 dark:bg-neutral-850">
         {images.map((image, index) => (
           <SwiperSlide key={index}>
             <img
               src={image.imageUrl ?? "/assets/fallback.webp"}
               alt={`image${index}`}
               loading="lazy"
-              className="pointer-events-none aspect-[4/3] w-full max-w-[640px] animate-reveal self-center justify-self-center rounded-lg bg-neutral-100 object-cover dark:bg-neutral-850"
+              className="pointer-events-none aspect-[4/3] w-full animate-reveal self-center justify-self-center rounded-lg bg-neutral-100 object-cover dark:bg-neutral-850"
               onError={e => {
                 (e.target as HTMLImageElement).onerror = null;
                 (e.target as HTMLImageElement).src = "/assets/fallback.webp";
@@ -45,7 +45,7 @@ export const Carousel = ({ images }: Props) => {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="swiper-detail-thumb w-full max-w-[640px] self-center justify-self-center rounded-lg bg-neutral-100 dark:bg-neutral-850">
+        className="swiper-detail-thumb w-full max-w-[640px] self-center justify-self-center">
         {images.map((image, index) => (
           <SwiperSlide key={index}>
             <img

@@ -1,22 +1,21 @@
 import { Container } from "@/components/layout/container";
-import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ProductDetailLoading() {
   return (
     <Container className="flex flex-col">
-      <Card className="flex flex-col gap-6 p-6">
+      <div className="flex flex-col gap-6">
         <Skeleton className="h-8 w-2/5" />
 
         <section className="grid flex-1 gap-6 lg:grid-cols-[3fr_2fr]">
           <div className="flex flex-col gap-4">
-            <Skeleton className="aspect-[4/3] w-full max-w-[640px] self-center justify-self-center" />
+            <Skeleton className="aspect-[4/3] w-full self-center justify-self-center" />
 
             <div className="grid grid-cols-3 gap-4">
               {[...Array(3)].map((_, index) => (
                 <Skeleton
                   key={index}
-                  className="aspect-[4/3] w-full max-w-[640px] self-center justify-self-center"
+                  className="aspect-[4/3] w-full self-center justify-self-center"
                 />
               ))}
             </div>
@@ -44,7 +43,7 @@ export default function ProductDetailLoading() {
             </div>
           </section>
         </section>
-      </Card>
+      </div>
     </Container>
   );
 }

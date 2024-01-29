@@ -10,11 +10,11 @@ body {
   min-width: 0;
 }
 
-.swiper-pagination-bullet {
+.hero .swiper-pagination-bullet {
   background: #777 !important;
 }
 
-.swiper-pagination-bullet-active {
+.hero .swiper-pagination-bullet-active {
   background: #00aeef !important;
 }
 

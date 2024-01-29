@@ -6,8 +6,6 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { CarouselCard } from "./carousel-card";
-
 export const Carousel = () => {
   return (
     <section className="w-full">
@@ -20,10 +18,10 @@ export const Carousel = () => {
         centeredSlides
         autoplay
         loop
-        className="h-full w-full">
+        className="hero h-full w-full">
         {[...Array(10)].map((_, index) => (
           <SwiperSlide key={index} className="max-w-[1200px] p-6">
-            <CarouselCard />
+            <div className="flex aspect-[3] items-center justify-center overflow-hidden rounded-3xl border border-neutral-200 bg-white duration-300 dark:border-neutral-800 dark:bg-neutral-950"></div>
           </SwiperSlide>
         ))}
       </Swiper>

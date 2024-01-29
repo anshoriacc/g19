@@ -3,6 +3,16 @@ import { notFound } from "next/navigation";
 import { Hourglass, KeySquare, LifeBuoy, Users } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Carousel } from "@/components/product-detail/carousel";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { delimiterFormatter } from "@/lib/utils";
 import {
   TCarter,
   TTour,
@@ -10,17 +20,6 @@ import {
   getProductDetail,
   getProductList,
 } from "@/data/product";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { delimiterFormatter } from "@/lib/utils";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Carousel } from "@/components/product-detail/carousel";
 
 // export async function generateStaticParams() {
 //   return ["rental", "tour", "carter"].map(async type => {
@@ -65,7 +64,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
   return (
     <Container className="flex flex-col">
-      <Card className="flex flex-col gap-6 p-6">
+      <div className="flex flex-col gap-6">
         <h1 className="text-2xl font-bold">{data?.name}</h1>
 
         <section className="grid flex-1 gap-6 lg:grid-cols-[3fr_2fr]">
@@ -162,7 +161,7 @@ export default async function ProductDetailPage({ params }: Props) {
             </div>
           </section>
         </section>
-      </Card>
+      </div>
     </Container>
   );
 }
