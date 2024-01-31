@@ -19,7 +19,6 @@ export const NavigationBar = async () => {
               <Skeleton className="h-8 w-16" />
               <Skeleton className="h-8 w-16" />
               <Skeleton className="h-8 w-8" />
-              <Skeleton className="h-10 w-10 rounded-full" />
             </div>
           }>
           <NavigationBarRight />
