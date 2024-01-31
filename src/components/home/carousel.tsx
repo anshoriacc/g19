@@ -24,22 +24,26 @@ export const Carousel = ({ images, systemConfig }: Props) => {
         modules={[Pagination, Autoplay]}
         slidesPerView="auto"
         centeredSlides
-        autoplay
-        loop
         className="hero h-full w-full">
         {images.length > 0 ? (
-          images.map((_, index) => (
+          images.map((image, index) => (
             <SwiperSlide key={index} className="max-w-[1200px] p-6">
-              <img
-                src={"/assets/fallback.webp"}
-                alt={`banner${index}`}
-                loading="lazy"
-                className="pointer-events-none aspect-[3] w-full animate-reveal overflow-hidden rounded-3xl bg-white object-cover dark:bg-neutral-950"
-                onError={e => {
-                  (e.target as HTMLImageElement).onerror = null;
-                  (e.target as HTMLImageElement).src = "/assets/fallback.webp";
-                }}
-              />
+              <a
+                href={image.url}
+                target="_blank"
+                className={cn(!image.url && "pointer-events-none")}>
+                <img
+                  src={image.imageUrl}
+                  alt={`banner${index}`}
+                  loading="lazy"
+                  className="pointer-events-none aspect-[3] w-full animate-reveal overflow-hidden rounded-3xl bg-white object-cover dark:bg-neutral-950"
+                  onError={e => {
+                    (e.target as HTMLImageElement).onerror = null;
+                    (e.target as HTMLImageElement).src =
+                      "/assets/fallback.webp";
+                  }}
+                />
+              </a>
             </SwiperSlide>
           ))
         ) : (
@@ -47,7 +51,7 @@ export const Carousel = ({ images, systemConfig }: Props) => {
             <div className="pointer-events-none flex aspect-[3] w-full items-center justify-center overflow-hidden rounded-3xl bg-white dark:bg-neutral-950">
               <div
                 className={cn(
-                  "select-none text-5xl md:text-8xl font-bold",
+                  "select-none text-5xl font-bold md:text-8xl",
                   "bg-gradient-to-b from-neutral-500 from-60% bg-clip-text text-transparent",
                 )}>
                 <span className={kanit.className}>
