@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, Suspense } from "react";
 
 import { NavigationBar } from "@/components/navigation/navigation-bar";
 import { Footer } from "@/components/layout/footer";
@@ -10,7 +10,9 @@ export default function PublicLayout({ children }: PropsWithChildren) {
 
       {children}
 
-      <Footer />
+      <Suspense>
+        <Footer />
+      </Suspense>
     </>
   );
 }

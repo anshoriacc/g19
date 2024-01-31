@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, Suspense } from "react";
 import { Metadata } from "next";
 
 import { FooterMinimal } from "@/components/layout/footer-minimal";
@@ -28,7 +28,9 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
         {children}
       </section>
 
-      <FooterMinimal />
+      <Suspense>
+        <FooterMinimal />
+      </Suspense>
     </>
   );
 }

@@ -1,17 +1,19 @@
+import { Suspense } from "react";
+
 import { ThemeToggle } from "./theme-toggle";
-import { auth } from "@/auth";
 import { DropdownMenuAdmin } from "./dropdown-menu-admin";
 import { SidebarMobile } from "./sidebar-mobile";
 import { Logo } from "../logo";
+import { Skeleton } from "../ui/skeleton";
 
 export const NavigationBarDashboard = async () => {
-  const session = await auth();
-
   return (
     <section className="sticky top-0 overflow-hidden border-b border-b-neutral-200 bg-white dark:border-b-neutral-800 dark:bg-neutral-950">
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6">
         <div className="hidden md:block">
-          <Logo />
+          <Suspense fallback={<Skeleton className="h-8 w-[72px]" />}>
+            <Logo />
+          </Suspense>
         </div>
 
         <SidebarMobile />
