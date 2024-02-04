@@ -44,7 +44,12 @@ export const Modal = ({ trigger, children, title, description }: Props) => {
             </DialogHeader>
           )}
 
-          <div className="p-4">{children}</div>
+          <div className="flex flex-col gap-4">
+            {children}
+            {/* <DrawerClose asChild>
+              <Button variant="outline">Batal</Button>
+            </DrawerClose> */}
+          </div>
         </DialogContent>
       </Dialog>
     );
@@ -65,13 +70,12 @@ export const Modal = ({ trigger, children, title, description }: Props) => {
           </DrawerHeader>
         )}
 
-        <div className="p-4 pb-2">{children}</div>
-
-        <DrawerFooter className="pt-2">
-          <DrawerClose asChild>
+        <div className="flex flex-col gap-4 p-4">
+          {children}
+          {/* <DrawerClose asChild>
             <Button variant="outline">Batal</Button>
-          </DrawerClose>
-        </DrawerFooter>
+          </DrawerClose> */}
+        </div>
       </DrawerContent>
     </Drawer>
   );

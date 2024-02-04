@@ -10,6 +10,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Modal } from "@/components/ui/modal";
+import { DrawerClose } from "@/components/ui/drawer";
 
 export const EditBanner = ({ id }: Props) => {
   return (
@@ -33,6 +34,10 @@ export const EditBanner = ({ id }: Props) => {
         </div>
       }>
       <p>Modal content</p>
+
+      <DrawerClose asChild>
+        <Button variant="outline">Batal</Button>
+      </DrawerClose>
     </Modal>
   );
 };

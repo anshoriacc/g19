@@ -10,6 +10,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Modal } from "@/components/ui/modal";
+import { DrawerClose } from "@/components/ui/drawer";
 
 export const DeleteBanner = ({ id }: Props) => {
   return (
@@ -37,6 +38,10 @@ export const DeleteBanner = ({ id }: Props) => {
         </div>
       }>
       <Button className="w-full">Hapus</Button>
+
+      <DrawerClose asChild>
+        <Button variant="outline">Batal</Button>
+      </DrawerClose>
     </Modal>
   );
 };

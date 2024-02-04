@@ -65,15 +65,15 @@ export const columns: ColumnDef<TBanner>[] = [
         <Tooltip>
           <TooltipTrigger asChild>
             <a
-              href={row.original.url}
+              href={row.original.url || undefined}
               target="_blank"
               className="line-clamp-1 w-[120px] text-ellipsis">
-              {row.original.url}
+              {row.original.url || "-"}
             </a>
           </TooltipTrigger>
 
           <TooltipContent>
-            <p>{row.original.url}</p>
+            <p>{row.original.url || "Tidak ada"}</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
