@@ -2,7 +2,7 @@ import { PropsWithChildren, Suspense } from "react";
 import { Metadata } from "next";
 
 import { FooterMinimal } from "@/components/layout/footer-minimal";
-import { Sidebar } from "@/components/navigation/sidebar";
+import { Sidebar } from "@/components/layout/sidebar";
 import { NavigationBarDashboard } from "@/components/navigation/navigation-bar-dashboard";
 import { getSystemConfig } from "@/data/app-system";
 

@@ -3,7 +3,7 @@ import { Menu } from "lucide-react";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
 import { Logo } from "../logo";
-import { NavigationListSidebar } from "./navigation-list-sidebar";
+import { NavigationListSidebar } from "../navigation/navigation-list-sidebar";
 
 export const SidebarMobile = () => {
   return (

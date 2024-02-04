@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 import { ThemeToggle } from "./theme-toggle";
 import { DropdownMenuAdmin } from "./dropdown-menu-admin";
-import { SidebarMobile } from "./sidebar-mobile";
+import { SidebarMobile } from "../layout/sidebar-mobile";
 import { Logo } from "../logo";
 import { Skeleton } from "../ui/skeleton";
 

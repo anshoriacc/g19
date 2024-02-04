@@ -1,4 +1,4 @@
-import { NavigationListSidebar } from "./navigation-list-sidebar";
+import { NavigationListSidebar } from "../navigation/navigation-list-sidebar";
 
 export const Sidebar = () => {
   return (
