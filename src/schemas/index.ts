@@ -16,7 +16,7 @@ export const appSystemSchema = z.object({
   phone: z
     .string()
     .regex(/^0?8\d{8,11}$/, { message: "Nomor telepon tidak valid." }),
-  email: z.string().regex(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, {
+  email: z.string().email({
     message: "Email tidak valid.",
   }),
   address: z.string().min(1, { message: "Alamat harus diisi." }),
